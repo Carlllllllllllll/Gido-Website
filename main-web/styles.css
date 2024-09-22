@@ -552,21 +552,13 @@ body.dark-mode #bot-status {
     margin-bottom: 10px;
 }
 
-/* Button Styles for Links */
+/* Link Styles */
 #service-policy a {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    color: #3762e2; /* Default text color */
+    text-decoration: underline; /* Add underline */
+    transition: color 0.3s; /* Smooth color transition */
 }
 
-#service-policy a:hover {
-    background-color: #0056b3;
-}
 
 /* Dark Mode Styles */
 body.dark-mode #service-policy h2,
