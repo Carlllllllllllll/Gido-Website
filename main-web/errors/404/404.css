@@ -31,7 +31,7 @@ h3 {
 }
 
 a:hover {
-    color: #ff0;
+    color: #2166e1;
 }
 
 span {
@@ -42,12 +42,12 @@ span {
 }
 
 span a {
-    color: #FF0;
+    color: #225896;
     text-decoration: none;
 }
 
 span a:hover {
-    color: #F00;
+    color: #235db0;
 }
 
 @media screen and (max-width: 500px) {
