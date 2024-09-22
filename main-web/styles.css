@@ -13,12 +13,12 @@ html, body {
 
 /* Dark Mode Styles */
 body.dark-mode {
-    background: #121212;
+    background: #712424;
     color: #e0e0e0;
 }
 
 body.dark-mode header {
-    background: #1f1f1f;
+    background: #17335c;
     color: #e0e0e0;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
 }
@@ -34,7 +34,7 @@ body.dark-mode nav a:hover {
 }
 
 body.dark-mode .hero {
-    background: #1f1f1f;
+    background: #17335c;
     color: #e0e0e0;
 }
 
@@ -69,7 +69,7 @@ body.dark-mode #support-form button {
 }
 
 header {
-    background: #4A63FF;
+    background: #17335c;
     color: #ffffff;
     padding: 10px 20px;
     display: flex;
@@ -113,7 +113,7 @@ header.hidden {
     border: none;
     cursor: pointer;
     font-size: 1.5em;
-    color: #003366;
+    color: #000000;
     transition: opacity 0.3s, transform 0.3s;
     position: fixed;
     right: 20px;
@@ -176,7 +176,7 @@ header.hidden {
     height: 60px;
     width: 60px;
     border-radius: 50%;
-    border: 3px solid #ffffff;
+    border: 3px solid #3a72a6;
     transition: transform 0.3s, margin-left 0.3s;
     margin-left: 10px;
 }
@@ -242,7 +242,7 @@ nav a.active.dark-mode, nav a:hover.dark-mode {
 
 /* Hero Section */
 .hero {
-    background: #4A63FF;
+    background: #17335c;
     height: 100vh;
     display: flex;
     align-items: center;
