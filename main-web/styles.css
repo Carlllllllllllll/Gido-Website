@@ -642,9 +642,8 @@ body.dark-mode .developer-card {
 
 /* Icons styling */
 .footer-icons img {
-    width: 48px; /* Icon size */
-    height: 48px;
-    cursor: pointer;
+width: 73px;
+height: 40px;
     animation: float 3s ease-in-out infinite; /* Continuous up-and-down animation */
     transition: transform 0.3s ease, animation 0.3s ease, opacity 0.3s ease; /* Smooth hover transition */
 }
