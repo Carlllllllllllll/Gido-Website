@@ -25,21 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function scrollToSection(element) {
-        const offset = window.innerHeight / 2 - element.clientHeight / 2;
-        window.scrollTo({
-            top: element.offsetTop - offset,
-            behavior: 'smooth'
+        function scrollToSection(element) {
+        element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
         });
     }
-
-    const firstSection = document.querySelector('section');
+        const firstSection = document.querySelector('section');
     if (firstSection) {
         scrollToSection(firstSection);
     }
 
     window.addEventListener('scroll', () => {
         handleScrollAnimation();
+
         let current = '';
         document.querySelectorAll('section').forEach(section => {
             const sectionTop = section.offsetTop;
@@ -49,7 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 current = section.getAttribute('id');
             }
         });
+
         setActiveLink(current);
+
         const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
         header.classList.toggle('hidden', currentScrollTop > lastScrollTop);
         lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
@@ -96,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         supportForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const now = new Date().getTime();
-            const tenHours = 10 * 60 * 60 * 1000;
+            const tenHours = 10 * 60 * 60 * 1000; // 10 hours
             const lastReportTime = parseInt(localStorage.getItem('lastReportTime'), 10) || 0;
             const reportCount = parseInt(localStorage.getItem('reportCount'), 10) || 0;
 
@@ -141,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
 
     const showNotification = (message, type) => {
         notificationContainer.className = `notification ${type}`;
