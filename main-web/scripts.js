@@ -62,8 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = link.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
-            scrollToSection(targetElement);
-            setActiveLink(targetId);
+            if (targetElement) {
+                scrollToSection(targetElement);
+                setActiveLink(targetId);
+            }
         });
     });
 
