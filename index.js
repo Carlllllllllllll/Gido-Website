@@ -64,7 +64,7 @@ app.get('/scripts.js', (req, res) => {
 
 app.use(bodyParser.json());
 
-app.get('/api/support', async (req, res) => {
+app.post('/api/support', async (req, res) => {
     const { nickname, email, description } = req.body;
     const webhookURL = process.env.WEBHOOK_URL;
     const userId = generateUserId(req);
