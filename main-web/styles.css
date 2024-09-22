@@ -630,38 +630,6 @@ body.dark-mode .developer-card {
     background-color: #0056b3; /* Darker blue for dark mode */
     color: white; /* Ensure text remains white */
 }
-.commands-section {
-    margin: 20px;
-    padding: 20px;
-}
-
-.search-bar {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.command-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-}
-
-.command-card h3 {
-    margin: 0;
-    font-size: 20px;
-    color: #333;
-}
-
-.command-card p {
-    font-size: 16px;
-    color: #666;
-}
 /* Footer container */
 .footer {
     display: flex;
@@ -703,5 +671,23 @@ body.dark-mode .developer-card {
     }
     50% {
         transform: translateY(-5px); /* Slight upward movement */
+    }
+}
+
+/* Media queries to adjust icon position based on resolution */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .footer-icons {
+        margin-top: 10px; /* Adjust margin for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-icons {
+        gap: 10px; /* Reduce space between icons on very small screens */
     }
 }
