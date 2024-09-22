@@ -84,46 +84,50 @@ app.post('/api/support', async (req, res) => {
     // Extract IP address
     const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-    const embed = {
-        content: `<@&1272577631191175272>`,
-        embeds: [
-            {
-                title: "Support Request",
-                color: 0x3498db,
-                fields: [
-                    {
-                        name: "Nickname",
-                        value: nickname,
-                        inline: false
-                    },
-                    {
-                        name: "Email",
-                        value: email,
-                        inline: false
-                    },
-                    {
-                        name: "Description",
-                        value: description,
-                        inline: false
-                    },
-                    {
-                        name: "User ID",
-                        value: userId,
-                        inline: false
-                    },
-                    {
-                        name: "IP Address",
-                        value: ipAddress,
-                        inline: false
-                    }
-                ],
-                footer: {
-                    text: "Help Within 24 Hours!",
+const embed = {
+    content: `<@&1272577631191175272>`,
+    embeds: [
+        {
+            title: "New Support Request!",
+            color: 0x3498db,
+            fields: [
+                {
+                    name: "Nickname",
+                    value: nickname,
+                    inline: false
                 },
-                timestamp: new Date().toISOString()
+                {
+                    name: "Email",
+                    value: email,
+                    inline: false
+                },
+                {
+                    name: "Description",
+                    value: description,
+                    inline: false
+                },
+                {
+                    name: "User ID",
+                    value: userId,
+                    inline: false
+                },
+                {
+                    name: "IP Address",
+                    value: ipAddress,
+                    inline: false
+                }
+            ],
+            footer: {
+                text: "Help Within 24 Hours!",
+            },
+            timestamp: new Date().toISOString(),
+            image: {
+                url: 'https://media.discordapp.net/attachments/1272578222164541460/1287239342984659005/standard_4.gif?ex=66f0d28f&is=66ef810f&hm=fd63acaa9f259bd48f83498c934027953ac7914ed184031853a971217cdacb20&=' // Replace with your image URL
             }
-        ]
-    };
+        }
+    ]
+};
+
 
     try {
         const response = await axios.post(webhookURL, embed);
