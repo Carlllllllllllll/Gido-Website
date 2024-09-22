@@ -26,27 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function scrollToSection(element) {
-        const headerOffset = header.offsetHeight;
-        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-        const offsetPosition = elementPosition - headerOffset;
-
+        const offset = window.innerHeight / 2 - element.clientHeight / 2;
         window.scrollTo({
-            top: offsetPosition,
+            top: element.offsetTop - offset,
             behavior: 'smooth'
         });
     }
 
-    document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                scrollToSection(targetElement);
-                setActiveLink(targetId);
-            }
-        });
-    });
+    const firstSection = document.querySelector('section');
+    if (firstSection) {
+        scrollToSection(firstSection);
+    }
 
     window.addEventListener('scroll', () => {
         handleScrollAnimation();
@@ -55,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
 
-            if (window.scrollY >= (sectionTop - 50) && window.scrollY < (sectionTop + sectionHeight - 50)) {
+            if (scrollY >= (sectionTop - 50) && scrollY < (sectionTop + sectionHeight - 50)) {
                 current = section.getAttribute('id');
             }
         });
@@ -63,6 +53,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
         header.classList.toggle('hidden', currentScrollTop > lastScrollTop);
         lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+    });
+
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            scrollToSection(targetElement);
+            setActiveLink(targetId);
+        });
     });
 
     handleScrollAnimation();
