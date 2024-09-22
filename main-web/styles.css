@@ -1,0 +1,707 @@
+/* Global Styles */
+html, body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    height: 100%;
+    min-height: 100%;
+    background: #ffffff;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode header {
+    background: #1f1f1f;
+    color: #e0e0e0;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode nav a {
+    color: #e0e0e0;
+}
+
+body.dark-mode nav a.active, 
+body.dark-mode nav a:hover {
+    background-color: #3b3bff;
+    color: #ffffff;
+}
+
+body.dark-mode .hero {
+    background: #1f1f1f;
+    color: #e0e0e0;
+}
+
+body.dark-mode .features {
+    background: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .cta-section {
+    background: #222;
+    color: #e0e0e0;
+}
+
+body.dark-mode footer {
+    background: #111;
+    color: #888;
+}
+
+body.dark-mode #support-form {
+    background: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode #support-form input, 
+body.dark-mode #support-form textarea {
+    border: 1px solid #555;
+    background: #444;
+}
+
+body.dark-mode #support-form button {
+    background: #3b3bff;
+}
+
+header {
+    background: #4A63FF;
+    color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left img {
+    height: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.header-left h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    margin-left: 10px;
+}
+
+header.hidden {
+    transform: translateY(-100%);
+}
+
+.header-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #003366;
+    transition: opacity 0.3s, transform 0.3s;
+    position: fixed;
+    right: 20px;
+    top: 15px;
+    z-index: 1100;
+    animation: pulse 1.5s infinite;
+}
+
+.dark-mode-toggle {
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1em;
+    color: #333; /* Default color in light mode */
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: absolute; /* Changed from fixed to absolute */
+    bottom: 20px; /* Moved to the bottom of the section */
+    right: 20px; /* Adjusted to move a little left */
+    z-index: 1100;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent; /* Added to make the button transparent */
+}
+
+.dark-mode-toggle:hover {
+    color: #333; /* Same color as light mode */
+    transform: scale(1.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    background-color: transparent; /* Kept transparent on hover */
+}
+
+.dark-mode-toggle:active {
+    transform: scale(0.9);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    background-color: transparent; /* Kept transparent on active */
+}
+
+/* Add this to make the toggle button the same color as dark mode when in dark mode */
+.dark-mode .dark-mode-toggle {
+    color: #ffffff; /* Default color in dark mode */
+}
+
+.dark-mode .dark-mode-toggle:hover {
+    color: #ffffff; /* Same color as dark mode */
+    background-color: transparent; /* Kept transparent on hover in dark mode */
+}
+.header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.bot-icon {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    transition: transform 0.3s, margin-left 0.3s;
+    margin-left: 10px;
+}
+
+.bot-icon:hover {
+    transform: scale(1.1);
+}
+
+header h1 {
+    margin-left: 10px;
+    font-size: 2em;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header h1:hover {
+    color: #d3d3d3;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 0;
+    justify-content: center;
+}
+
+nav a {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+    display: inline-block;
+    z-index: 1000;
+}
+
+nav a.active, nav a:hover {
+    background-color: #3b3bff;
+    color: #ffffff;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+header.dark-mode {
+    background: #1e1e1e;
+}
+
+nav a.dark-mode {
+    color: #ffffff;
+}
+
+nav a.active.dark-mode, nav a:hover.dark-mode {
+    background-color: #3b3bff;
+    color: #ffffff;
+}
+
+/* Hero Section */
+.hero {
+    background: #4A63FF;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    animation: slideIn 1s ease-out;
+}
+
+/* Hero Content */
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+}
+
+.cta {
+    display: inline-block;
+    background: #5865f2;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta:hover {
+    background-color: #3b3bff;
+    transform: scale(1.05);
+}
+
+/* Features Section */
+.features {
+    padding: 60px 20px;
+    background: #fffdfd; /* Light background similar to bot status */
+    color: #222; /* Default text color */
+}
+
+body.dark-mode .features {
+    background: #222; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+}
+
+.features h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 40px;
+    color: inherit; /* Inherit text color from parent */
+}
+
+.feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.feature-item {
+    background: #007bff; /* Always blue background for cards */
+    border-radius: 10px; /* More modern rounded corners */
+    padding: 20px;
+    margin: 10px;
+    max-width: 300px;
+    text-align: center;
+    color: #0c0c0c; /* Default text color */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+body.dark-mode .feature-item {
+    background: #0056b3; /* Darker blue for dark mode */
+    color: #ffffff; /* White text color for dark mode */
+}
+
+.feature-item h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: inherit; /* Inherit color from parent */
+}
+
+.feature-item p {
+    color: inherit; /* Inherit color from parent */
+}
+
+
+
+
+/* CTA Sections */
+.cta-section {
+    padding: 60px 20px;
+    background: #ffffff;
+    color: #333;
+    text-align: center;
+}
+
+.cta-section.dark-mode {
+    background: #222;
+    color: #e0e0e0;
+}
+
+.cta-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Contact Form */
+#support-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 40px;
+}
+
+#support-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#support-form input, 
+#support-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-width: 576px;
+}
+
+#support-form button {
+    background: #4A63FF;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#support-form button:hover {
+    background-color: #3b3bff;
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background: #f1f1f1;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+}
+
+footer.dark-mode {
+    background: #111;
+    color: #888;
+}
+
+footer a {
+    color: #4A63FF;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Bot Status Section */
+#bot-status {
+    padding: 60px 20px;
+    background: #fffdfd;
+    color: #222;
+    text-align: center;
+}
+
+body.dark-mode #bot-status {
+    background: #222;
+    color: #fffefe;
+}
+
+#bot-status h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.status-indicator {
+    display: inline-block;
+    background-color: #4CAF50; /* Green background for the status indicator */
+    border-radius: 12px;
+    padding: 10px 20px;
+    color: white;
+    font-size: 1.5em;
+    position: relative;
+    overflow: hidden;
+    animation: pulse 1.5s infinite;
+}
+
+.status-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Scroll Menu */
+#scroll-menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4A63FF;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#scroll-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#scroll-menu li {
+    margin: 10px 0;
+}
+
+#scroll-menu a {
+    color: white;
+    text-decoration: none;
+}
+
+#scroll-menu a.active {
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
+}
+
+#service-policy {
+    padding: 40px 20px;
+    background: #ffffff;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#service-policy .container {
+    max-width: 800px;
+    width: 100%;
+}
+
+#service-policy .description {
+    text-align: center;
+}
+
+#service-policy h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: black; /* Black text for light mode */
+}
+
+#service-policy h3 {
+    font-size: 1.8em;
+    margin-top: 20px;
+    color: black; /* Black text for light mode */
+}
+
+#service-policy p {
+    line-height: 1.6;
+    margin-bottom: 15px; /* Spacing between paragraphs */
+}
+
+#service-policy ul {
+    margin-left: 20px;
+    list-style-type: disc;
+}
+
+#service-policy ul li {
+    margin-bottom: 10px;
+}
+
+/* Button Styles for Links */
+#service-policy a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#service-policy a:hover {
+    background-color: #0056b3;
+}
+
+/* Dark Mode Styles */
+body.dark-mode #service-policy h2,
+body.dark-mode #service-policy h3 {
+    color: #007bff; /* Blue text for dark mode */
+}
+
+/* Dark Mode Styles */
+body.dark-mode #service-policy {
+    background: #222;
+    color: #e0e0e0;
+}
+
+body.dark-mode #service-policy h2,
+body.dark-mode #service-policy h3 {
+    color: #ffffff;
+}
+
+body.dark-mode #service-policy p, 
+body.dark-mode #service-policy ul li {
+    color: #e0e0e0;
+}
+/* Developer Card Styles */
+.developer-card {
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center align items */
+    justify-content: center; /* Center content vertically */
+    padding: 20px;
+    background-color: #007bff; /* Blue background */
+    color: white; /* Text color for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    margin: 20px 0; /* Space around the card */
+}
+
+.developer-img {
+    margin-bottom: 15px; /* Space below the image */
+}
+
+.circle-frame {
+    width: 100px; /* Set width */
+    height: 100px; /* Set height */
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover; /* Ensure the image fits well */
+}
+
+.developer-info h3 {
+    margin: 0; /* Remove default margin */
+    font-size: 1.5em; /* Adjust font size */
+    text-align: center; /* Center text */
+}
+
+.developer-info p {
+    margin: 5px 0 0; /* Spacing for the paragraph */
+    color: #e0e0e0; /* Lighter color for the rank */
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .developer-card {
+    background-color: #0056b3; /* Darker blue for dark mode */
+    color: white; /* Ensure text remains white */
+}
+.commands-section {
+    margin: 20px;
+    padding: 20px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.command-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.command-card h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.command-card p {
+    font-size: 16px;
+    color: #666;
+}
+/* Footer container */
+.footer {
+    display: flex;
+    justify-content: left;
+    align-items: flex-start; /* Align items at the top */
+    padding: 5px 20px; /* Reduced padding for a smaller footer */
+    background-color: #f1f1f1; /* Light background */
+    height: 60px; /* Make the footer smaller */
+    overflow: hidden; /* Ensure everything stays inside the footer */
+}
+
+/* Footer icons container */
+.footer-icons {
+    display: flex;
+    gap: 20px; /* Space between icons */
+    margin-top: -20px; /* Move the icons higher */
+}
+
+/* Icons styling */
+.footer-icons img {
+    width: 48px; /* Icon size */
+    height: 48px;
+    cursor: pointer;
+    animation: float 3s ease-in-out infinite; /* Continuous up-and-down animation */
+    transition: transform 0.3s ease, animation 0.3s ease, opacity 0.3s ease; /* Smooth hover transition */
+}
+
+/* Hover effect: icons zoom in, animation stops */
+.footer-icons img:hover {
+    animation-play-state: paused; /* Stop the animation on hover */
+    transform: scale(1.8); /* Zoom in on hover */
+    opacity: 1; /* Full opacity */
+}
+
+/* Keyframes for a subtle floating effect */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0); /* Start at the original position */
+    }
+    50% {
+        transform: translateY(-5px); /* Slight upward movement */
+    }
+}
