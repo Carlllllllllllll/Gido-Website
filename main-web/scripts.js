@@ -117,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const formData = new FormData(supportForm);
+            const nickname = formData.get('user-nickname');
             const email = formData.get('user-email');
             const description = formData.get('user-description');
 
@@ -126,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ email, description })
+                    body: JSON.stringify({ nickname, email, description })
                 });
 
                 if (response.ok) {
