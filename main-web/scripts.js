@@ -27,35 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function scrollToSection(element) {
         const headerOffset = header.offsetHeight;
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - (window.innerHeight / 2) + (headerOffset / 2);
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerOffset;
+
         window.scrollTo({
             top: offsetPosition,
             behavior: 'smooth'
         });
     }
-
-    const firstSection = document.querySelector('section');
-    if (firstSection) {
-        scrollToSection(firstSection);
-    }
-
-    window.addEventListener('scroll', () => {
-        handleScrollAnimation();
-        let current = '';
-        document.querySelectorAll('section').forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-
-            if (scrollY >= (sectionTop - 50) && scrollY < (sectionTop + sectionHeight - 50)) {
-                current = section.getAttribute('id');
-            }
-        });
-        setActiveLink(current);
-        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        header.classList.toggle('hidden', currentScrollTop > lastScrollTop);
-        lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
-    });
 
     document.querySelectorAll('nav a').forEach(link => {
         link.addEventListener('click', (e) => {
@@ -67,6 +46,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 setActiveLink(targetId);
             }
         });
+    });
+
+    window.addEventListener('scroll', () => {
+        handleScrollAnimation();
+        let current = '';
+        document.querySelectorAll('section').forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+
+            if (window.scrollY >= (sectionTop - 50) && window.scrollY < (sectionTop + sectionHeight - 50)) {
+                current = section.getAttribute('id');
+            }
+        });
+        setActiveLink(current);
+        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        header.classList.toggle('hidden', currentScrollTop > lastScrollTop);
+        lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
     });
 
     handleScrollAnimation();
