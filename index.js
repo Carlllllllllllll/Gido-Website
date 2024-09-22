@@ -88,7 +88,7 @@ app.post('/api/support', async (req, res) => {
         content: `<@&1272577631191175272>`,
         embeds: [
             {
-                title: "New Support Request!",
+                title: "Support Request",
                 color: 0x3498db,
                 fields: [
                     {
