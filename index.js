@@ -91,13 +91,35 @@ app.post('/api/support', async (req, res) => {
                 title: "Support Request",
                 color: 0x3498db,
                 fields: [
-                    { name: "Nickname", value: nickname, inline: false },
-                    { name: "Email", value: email, inline: false },
-                    { name: "Description", value: description, inline: false },
-                    { name: "User ID", value: userId, inline: false },
-                    { name: "IP Address", value: ipAddress, inline: false }
+                    {
+                        name: "Nickname",
+                        value: nickname,
+                        inline: false
+                    },
+                    {
+                        name: "Email",
+                        value: email,
+                        inline: false
+                    },
+                    {
+                        name: "Description",
+                        value: description,
+                        inline: false
+                    },
+                    {
+                        name: "User ID",
+                        value: userId,
+                        inline: false
+                    },
+                    {
+                        name: "IP Address",
+                        value: ipAddress,
+                        inline: false
+                    }
                 ],
-                footer: { text: "Help Within 24 Hours!" },
+                footer: {
+                    text: "Help Within 24 Hours!",
+                },
                 timestamp: new Date().toISOString()
             }
         ]
@@ -117,7 +139,6 @@ app.post('/api/support', async (req, res) => {
         res.status(500).json({ message: 'Error submitting request.' });
     }
 });
-
 process.on('uncaughtException', (err) => {
     console.log(`Unexpected error: ${err.message}`, err);
     process.exit(1);
