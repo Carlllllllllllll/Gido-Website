@@ -30,7 +30,6 @@ let botIsOnline = false;
 let lastOnlineTimestamp = null;
 let lastOfflineTimestamp = null;
 let lastWebsiteStatus = 'Checking...';
-let websiteOnlineSince = null;
 
 app.use(cors({
   origin: 'https://gido-bot-web.onrender.com',
@@ -88,9 +87,6 @@ client.once(Events.ClientReady, async () => {
             const currentStatus = await checkWebsiteStatus();
             if (currentStatus !== lastWebsiteStatus) {
                 lastWebsiteStatus = currentStatus;
-                if (currentStatus === '🟢 Online' && !websiteOnlineSince) {
-                    websiteOnlineSince = Math.floor(Date.now() / 1000);
-                }
                 await createOrUpdateWebsiteStatusEmbed(currentStatus);
             }
         };
@@ -186,7 +182,8 @@ async function createBotStatusEmbed(online) {
 }
 
 const createWebsiteStatusEmbed = async (status) => {
-    const onlineSince = websiteOnlineSince || Math.floor(Date.now() / 1000);
+    const now = Math.floor(Date.now() / 1000);
+    const onlineSince = lastWebsiteStatus === '🟢 Online' ? (lastOnlineTimestamp || now) : (lastOfflineTimestamp || now);
     const description = status === '🟢 Online'
         ? `**Current Status:** ${status}\n**Web Online Since:** <t:${onlineSince}:R>\n**Website Link**: [Click Here](https://gido-bot-web.onrender.com/)`
         : `**Current Status:** ${status}\n**Web Offline Since:** <t:${onlineSince}:R>\n**Website Link**: [Click Here](https://gido-bot-web.onrender.com/)`;
@@ -196,4 +193,19 @@ const createWebsiteStatusEmbed = async (status) => {
         .setDescription(description)
         .setColor(status === '🟢 Online' ? '#00FF00' : '#FF0000')
         .setFooter({ text: 'Thanks for using Gido Website 😊' })
-        .setThumbnail('https://media.discordapp.net/attachments/1272578222164541460/1281437526317600821/Gido-Carl.png?ex=66
+        .setThumbnail('https://media.discordapp.net/attachments/1272578222164541460/1281437526317600821/Gido-Carl.png?ex=66dbb732&is=66da65b2&hm=0b355cfc56f20ea283b0931de66a04c0a8e28fcbef2c9298c50ba26da49cf2b8&=&format=webp&quality=lossless&width=424&height=424')
+        .setImage('https://media.discordapp.net/attachments/1272578222164541460/1281437525872738314/Gido-web-Carl.gif?ex=66e05472&is=66df02f2&hm=c5d42e6059910062a21451ef476e5dc2fee05f17f7f748ac261835a2d52c2fa8&=&width=832&height=468');
+}
+
+async function sendPing(message) {
+    const pingChannel = await client.channels.fetch(PING_CHANNEL_ID);
+    if (pingChannel) {
+        try {
+            await pingChannel.send(message);
+        } catch (error) {
+            console.error(`Error sending ping message: ${error.message}`);
+        }
+    }
+}
+
+client.login(process.env.BOT_TOKEN);
