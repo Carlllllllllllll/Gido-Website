@@ -99,7 +99,7 @@ app.post('/api/support', async (req, res) => {
 
     const isBanned = await checkIfBanned(userId);
     if (isBanned) {
-        return res.status(403).json({
+        return res.status(200).json({
             message: 'You are banned from submitting requests. Please contact support on Discord for more info: https://discord.gg/Gq48UpPrXH',
         });
     }
