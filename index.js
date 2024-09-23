@@ -8,29 +8,25 @@ const axios = require('axios');
 const app = express();
 const PORT = 8080;
 
-const bannedLogCache = {}; // Store the last time a banned user was logged
+const bannedLogCache = {};
 
-// Function to generate a unique user ID based on user-agent and IP
 const generateUserId = (req) => {
     return crypto.createHash('sha256').update(req.headers['user-agent'] + req.ip).digest('hex');
 };
 
-// Function to check if a user is banned
 const checkIfBanned = async (userId) => {
     const bannedUsers = process.env.BANNED_USERS ? process.env.BANNED_USERS.split('/') : [];
-    const bannedWebhook = process.env.BANNED_WEBHOOK;
-
-    console.log('Checking if user is banned:', userId); // Debugging line
+    console.log('Banned Users List:', bannedUsers); // Debugging line
+    console.log('Checking User ID:', userId); // Debugging line
 
     if (bannedUsers.includes(userId)) {
         const currentTime = Date.now();
         const lastLogTime = bannedLogCache[userId] || 0;
 
-        // Log the banned user to the webhook if more than 1 hour has passed since the last log
         if (currentTime - lastLogTime > 60 * 60 * 1000) {
-            bannedLogCache[userId] = currentTime; // Update the last log time for the user
+            bannedLogCache[userId] = currentTime;
 
-            // Send a log to the banned webhook
+            const bannedWebhook = process.env.BANNED_WEBHOOK;
             try {
                 await axios.post(bannedWebhook, {
                     content: `Banned user tried to submit a request: User ID - ${userId}`
@@ -41,10 +37,10 @@ const checkIfBanned = async (userId) => {
             }
         }
 
-        return true; // Return true if the user is banned
+        return true; // User is banned
     }
 
-    return false; // Return false if the user is not banned
+    return false; // User is not banned
 };
 
 const generateNonce = () => crypto.randomBytes(16).toString('base64');
@@ -95,14 +91,12 @@ app.post('/api/support', async (req, res) => {
     const webhookURL = process.env.WEBHOOK_URL;
     const userId = generateUserId(req);
 
-    // Check if nickname, email, or description is missing
     if (!nickname || !email || !description) {
         return res.status(400).json({ message: 'All fields are required.' });
     }
 
     console.log('User ID:', userId); // Debugging line
 
-    // Check if user is banned
     const isBanned = await checkIfBanned(userId);
     if (isBanned) {
         return res.status(403).json({
@@ -110,7 +104,6 @@ app.post('/api/support', async (req, res) => {
         });
     }
 
-    // Extract IP address
     const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
     const embed = {
@@ -186,27 +179,27 @@ app.get('/images/*', (req, res) => {
 });
 
 app.use((req, res, next) => {
-  if (req.accepts('html')) {
-    res.status(404).sendFile(path.join(__dirname, 'main-web/errors/404/404.html'));
-  } else {
-    res.status(404).send('Resource not found');
-  }
+    if (req.accepts('html')) {
+        res.status(404).sendFile(path.join(__dirname, 'main-web/errors/404/404.html'));
+    } else {
+        res.status(404).send('Resource not found');
+    }
 });
 
 app.use((req, res, next) => {
-  next(createError(404));
+    next(createError(404));
 });
 
 app.use((err, req, res, next) => {
-  if (err.status === 404) {
-    if (req.accepts('html')) {
-      res.status(404).sendFile(path.join(__dirname, 'main-web/errors/404/404.html'));
+    if (err.status === 404) {
+        if (req.accepts('html')) {
+            res.status(404).sendFile(path.join(__dirname, 'main-web/errors/404/404.html'));
+        } else {
+            res.status(404).send('Resource not found');
+        }
     } else {
-      res.status(404).send('Resource not found');
+        next(err);
     }
-  } else {
-    next(err);
-  }
 });
 
 app.listen(PORT, () => console.log(`Online on: ${PORT}`));
