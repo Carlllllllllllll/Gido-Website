@@ -33,7 +33,7 @@ app.use(helmet({
         directives: {
             defaultSrc: ["'none'"],
             imgSrc: ["'self'", "https://gido-web.onrender.com", "data:", "https://cdn.discordapp.com", "https://images-ext-1.discordapp.net", "https://media.discordapp.net/attachments/", "https://media.discordapp.net/", "/images/"],
-            connectSrc: ["'self'", "https://gido-web.onrender.com", "https://fetch-bot-1.onrender.com"],
+            connectSrc: ["'self'", "https://gido-web.onrender.com", "https://fetch-bot-fvty.onrender.com"],
             scriptSrc: ["'self'", "https://gido-web.onrender.com"],
             styleSrc: ["'self'", (req, res) => `'nonce-${res.locals.nonce}'`, "https://gido-web.onrender.com"],
         },
@@ -84,46 +84,47 @@ app.post('/api/support', async (req, res) => {
     // Extract IP address
     const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-    const embed = {
-        content: `<@&1287531476035960904>`,
-        embeds: [
+    embeds: [
+    {
+        title: "New Support Request!",
+        color: 0x3498db,
+        fields: [
             {
-                title: "New Support Request!",
-                color: 0x3498db,
-                fields: [
-                    {
-                        name: "Nickname",
-                        value: nickname,
-                        inline: false
-                    },
-                    {
-                        name: "Email",
-                        value: email,
-                        inline: false
-                    },
-                    {
-                        name: "Description",
-                        value: description,
-                        inline: false
-                    },
-                    {
-                        name: "User ID",
-                        value: userId,
-                        inline: false
-                    },
-                    {
-                        name: "IP Address",
-                        value: ipAddress,
-                        inline: false
-                    }
-                ],
-                footer: {
-                    text: "Help Within 24 Hours!",
-                },
-                timestamp: new Date().toISOString()
+                name: "Nickname",
+                value: nickname,
+                inline: false
+            },
+            {
+                name: "Email",
+                value: email,
+                inline: false
+            },
+            {
+                name: "Description",
+                value: description,
+                inline: false
+            },
+            {
+                name: "User ID",
+                value: userId,
+                inline: false
+            },
+            {
+                name: "IP Address",
+                value: ipAddress,
+                inline: false
             }
-        ]
-    };
+        ],
+        image: {
+            url: "https://media.discordapp.net/attachments/1272578222164541460/1287239342984659005/standard_4.gif?ex=66f2240f&is=66f0d28f&hm=b955ad0ca7d2ec8809b6b8de8c0ef777d215f64c6f5bdc4b0c02701f63700a61&=" // URL of the image
+        },
+        footer: {
+            text: "Help Within 24 Hours!",
+        },
+        timestamp: new Date().toISOString()
+    }
+]
+
 
     try {
         const response = await axios.post(webhookURL, embed);
