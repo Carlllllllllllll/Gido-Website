@@ -85,10 +85,10 @@ app.post('/api/support', async (req, res) => {
     const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
     const embed = {
-        content: `<@&1272577631191175272>`,
+        content: `<@&1287531476035960904>`,
         embeds: [
             {
-                title: "Support Request",
+                title: "New Support Request!",
                 color: 0x3498db,
                 fields: [
                     {
