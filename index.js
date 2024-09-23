@@ -8,6 +8,8 @@ const axios = require('axios');
 const app = express();
 const PORT = 8080;
 
+const bannedLogCache = {}; // Store the last time a banned user was logged
+
 // Function to generate a unique user ID based on user-agent and IP
 const generateUserId = (req) => {
     return crypto.createHash('sha256').update(req.headers['user-agent'] + req.ip).digest('hex');
@@ -17,17 +19,28 @@ const generateUserId = (req) => {
 const checkIfBanned = async (userId) => {
     const bannedUsers = process.env.BANNED_USERS ? process.env.BANNED_USERS.split('/') : [];
     const bannedWebhook = process.env.BANNED_WEBHOOK;
-    
+
     if (bannedUsers.includes(userId)) {
-        try {
-            await axios.post(bannedWebhook, {
-                content: `Banned user tried to submit a request: User ID - ${userId}`
-            });
-        } catch (error) {
-            console.error('Failed to send banned user log to webhook:', error);
+        const currentTime = Date.now();
+        const lastLogTime = bannedLogCache[userId] || 0;
+
+        // If it's been more than an hour since the last log
+        if (currentTime - lastLogTime > 60 * 60 * 1000) {
+            bannedLogCache[userId] = currentTime; // Update log time for the user
+
+            // Send a log to the banned webhook
+            try {
+                await axios.post(bannedWebhook, {
+                    content: `Banned user tried to submit a request: User ID - ${userId}`
+                });
+            } catch (error) {
+                console.error('Failed to send banned user log to webhook:', error);
+            }
         }
+
         return true;
     }
+
     return false;
 };
 
