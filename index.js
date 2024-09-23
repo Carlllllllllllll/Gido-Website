@@ -20,28 +20,31 @@ const checkIfBanned = async (userId) => {
     const bannedUsers = process.env.BANNED_USERS ? process.env.BANNED_USERS.split('/') : [];
     const bannedWebhook = process.env.BANNED_WEBHOOK;
 
+    console.log('Checking if user is banned:', userId); // Debugging line
+
     if (bannedUsers.includes(userId)) {
         const currentTime = Date.now();
         const lastLogTime = bannedLogCache[userId] || 0;
 
-        // If it's been more than an hour since the last log
+        // Log the banned user to the webhook if more than 1 hour has passed since the last log
         if (currentTime - lastLogTime > 60 * 60 * 1000) {
-            bannedLogCache[userId] = currentTime; // Update log time for the user
+            bannedLogCache[userId] = currentTime; // Update the last log time for the user
 
             // Send a log to the banned webhook
             try {
                 await axios.post(bannedWebhook, {
                     content: `Banned user tried to submit a request: User ID - ${userId}`
                 });
+                console.log('Banned user logged to webhook:', userId); // Debugging line
             } catch (error) {
                 console.error('Failed to send banned user log to webhook:', error);
             }
         }
 
-        return true;
+        return true; // Return true if the user is banned
     }
 
-    return false;
+    return false; // Return false if the user is not banned
 };
 
 const generateNonce = () => crypto.randomBytes(16).toString('base64');
@@ -97,8 +100,11 @@ app.post('/api/support', async (req, res) => {
         return res.status(400).json({ message: 'All fields are required.' });
     }
 
+    console.log('User ID:', userId); // Debugging line
+
     // Check if user is banned
-    if (await checkIfBanned(userId)) {
+    const isBanned = await checkIfBanned(userId);
+    if (isBanned) {
         return res.status(403).json({
             message: 'You are banned from submitting requests. Please contact support on Discord for more info: https://discord.gg/Gq48UpPrXH',
         });
