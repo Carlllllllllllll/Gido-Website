@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const errorMessage = document.getElementById('error-message');
         
         try {
-            const response = await fetch('https://fetch-bot-fvty.onrender.com//api/status');
+            const response = await fetch('https://fetch-bot-fvty.onrender.com/api/status');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
