@@ -83,16 +83,13 @@ client.once(Events.ClientReady, async () => {
 
         await client.user.setActivity('🔍 Gido Bot/Website', { type: ActivityType.Watching });
 
-        const checkWebsiteStatusAndUpdateEmbed = async () => {
+        setInterval(async () => {
             const currentStatus = await checkWebsiteStatus();
             if (currentStatus !== lastWebsiteStatus) {
                 lastWebsiteStatus = currentStatus;
-                await createOrUpdateWebsiteStatusEmbed(currentStatus);
+                await updateWebsiteStatusEmbed(currentStatus);
             }
-        };
-
-        checkWebsiteStatusAndUpdateEmbed();
-        setInterval(checkWebsiteStatusAndUpdateEmbed, 60000);
+        }, 60000);
 
     } catch (error) {
         console.error(`Error in ClientReady event: ${error.message}`);
@@ -130,10 +127,23 @@ const checkWebsiteStatus = async () => {
     }
 };
 
-const createOrUpdateWebsiteStatusEmbed = async (status) => {
+const updateWebsiteStatusEmbed = async (status) => {
     if (websiteStatusMessage) {
+        const now = Math.floor(Date.now() / 1000);
+        const onlineSince = status === '🟢 Online' ? (lastOnlineTimestamp || now) : (lastOfflineTimestamp || now);
+        const description = status === '🟢 Online'
+            ? `**Current Status:** ${status}\n**Web Online Since:** <t:${onlineSince}:R>\n**Website Link**: [Click Here](https://gido-bot-web.onrender.com/)`
+            : `**Current Status:** ${status}\n**Web Offline Since:** <t:${onlineSince}:R>\n**Website Link**: [Click Here](https://gido-bot-web.onrender.com/)`;
+
         try {
-            await websiteStatusMessage.edit({ embeds: [await createWebsiteStatusEmbed(status)] });
+            await websiteStatusMessage.edit({ embeds: [new EmbedBuilder()
+                .setTitle('🔄 Website Status')
+                .setDescription(description)
+                .setColor(status === '🟢 Online' ? '#00FF00' : '#FF0000')
+                .setFooter({ text: 'Thanks for using Gido Website 😊' })
+                .setThumbnail('https://media.discordapp.net/attachments/1272578222164541460/1281437526317600821/Gido-Carl.png?ex=66dbb732&is=66da65b2&hm=0b355cfc56f20ea283b0931de66a04c0a8e28fcbef2c9298c50ba26da49cf2b8&=&format=webp&quality=lossless&width=424&height=424')
+                .setImage('https://media.discordapp.net/attachments/1272578222164541460/1281437525872738314/Gido-web-Carl.gif?ex=66e05472&is=66df02f2&hm=c5d42e6059910062a21451ef476e5dc2fee05f17f7f748ac261835a2d52c2fa8&=&width=832&height=468')
+            ]});
             console.log('Website status embed updated successfully');
         } catch (error) {
             console.error(`Error updating website status embed: ${error.message}`);
@@ -179,22 +189,6 @@ async function createBotStatusEmbed(online) {
         .setFooter({ text: 'Thanks for using Gido Bot 😊' })
         .setThumbnail('https://media.discordapp.net/attachments/1272578222164541460/1278278392604786829/Gido.png?ex=66db6dc6&is=66da1c46&hm=134e3cb4bfed9c046e4ef10ea2eb247b31d942fd16d6ce19ba309eb28ebca0ab&=&format=webp&quality=lossless&width=424&height=424')
         .setImage('https://media.discordapp.net/attachments/1272578222164541460/1278278466239856712/gIDO_LOGO.gif?ex=66db6dd7&is=66da1c57&hm=6636580839cdd66497ca171f58d46b93d4180d4d044e591cb64e871ad69d7b43&=&width=550&height=194');
-}
-
-const createWebsiteStatusEmbed = async (status) => {
-    const now = Math.floor(Date.now() / 1000);
-    const onlineSince = lastWebsiteStatus === '🟢 Online' ? (lastOnlineTimestamp || now) : (lastOfflineTimestamp || now);
-    const description = status === '🟢 Online'
-        ? `**Current Status:** ${status}\n**Web Online Since:** <t:${onlineSince}:R>\n**Website Link**: [Click Here](https://gido-bot-web.onrender.com/)`
-        : `**Current Status:** ${status}\n**Web Offline Since:** <t:${onlineSince}:R>\n**Website Link**: [Click Here](https://gido-bot-web.onrender.com/)`;
-
-    return new EmbedBuilder()
-        .setTitle('🔄 Website Status')
-        .setDescription(description)
-        .setColor(status === '🟢 Online' ? '#00FF00' : '#FF0000')
-        .setFooter({ text: 'Thanks for using Gido Website 😊' })
-        .setThumbnail('https://media.discordapp.net/attachments/1272578222164541460/1281437526317600821/Gido-Carl.png?ex=66dbb732&is=66da65b2&hm=0b355cfc56f20ea283b0931de66a04c0a8e28fcbef2c9298c50ba26da49cf2b8&=&format=webp&quality=lossless&width=424&height=424')
-        .setImage('https://media.discordapp.net/attachments/1272578222164541460/1281437525872738314/Gido-web-Carl.gif?ex=66e05472&is=66df02f2&hm=c5d42e6059910062a21451ef476e5dc2fee05f17f7f748ac261835a2d52c2fa8&=&width=832&height=468');
 }
 
 async function sendPing(message) {
