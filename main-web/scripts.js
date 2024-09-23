@@ -121,26 +121,32 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = formData.get('user-email');
             const description = formData.get('user-description');
 
-            try {
-                const response = await fetch('https://gido-bot-web.onrender.com/api/support', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ nickname, email, description })
-                });
+try {
+    const response = await fetch('https://gido-bot-web.onrender.com/api/support', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ nickname, email, description })
+    });
 
-                if (response.ok) {
-                    alert('Request submitted successfully. You will receive an email within 24 hours.');
-                    localStorage.setItem('lastReportTime', now.toString());
-                    supportForm.reset();
-                } else {
-                    alert('Failed to submit report. Please try again later.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Failed to submit report. Please try again later.');
-            }
+    if (response.status === 401) {
+        alert('You are banned.');
+        return;
+    }
+
+    if (response.ok) {
+        alert('Request submitted successfully. You will receive an email within 24 hours.');
+        localStorage.setItem('lastReportTime', now.toString());
+        supportForm.reset();
+    } else {
+        alert('Failed to submit report. Please try again later.');
+    }
+} catch (error) {
+    console.error('Error:', error);
+    alert('Failed to submit report. Please try again later.');
+}
+
         });
     }
 
