@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    alert('Report submitted successfully.');
+                    alert('Request submitted successfully. You will receive an email within 24 hours.');
                     localStorage.setItem('lastReportTime', now.toString());
                     supportForm.reset();
                 } else {
