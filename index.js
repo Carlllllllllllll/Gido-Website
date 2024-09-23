@@ -14,11 +14,21 @@ const generateUserId = (req) => {
 };
 
 // Function to check if a user is banned
-const checkIfBanned = (userId) => {
+const checkIfBanned = async (userId) => {
     const bannedUsers = process.env.BANNED_USERS ? process.env.BANNED_USERS.split('/') : [];
-    console.log('Banned Users:', bannedUsers); // Debugging
-    console.log('User ID:', userId); // Debugging
-    return bannedUsers.includes(userId);
+    const bannedWebhook = process.env.BANNED_WEBHOOK;
+    
+    if (bannedUsers.includes(userId)) {
+        try {
+            await axios.post(bannedWebhook, {
+                content: `Banned user tried to submit a request: User ID - ${userId}`
+            });
+        } catch (error) {
+            console.error('Failed to send banned user log to webhook:', error);
+        }
+        return true;
+    }
+    return false;
 };
 
 const generateNonce = () => crypto.randomBytes(16).toString('base64');
@@ -75,7 +85,7 @@ app.post('/api/support', async (req, res) => {
     }
 
     // Check if user is banned
-    if (checkIfBanned(userId)) {
+    if (await checkIfBanned(userId)) {
         return res.status(403).json({
             message: 'You are banned from submitting requests. Please contact support on Discord for more info: https://discord.gg/Gq48UpPrXH',
         });
@@ -139,6 +149,7 @@ app.post('/api/support', async (req, res) => {
         res.status(500).json({ message: 'Error submitting request.' });
     }
 });
+
 process.on('uncaughtException', (err) => {
     console.log(`Unexpected error: ${err.message}`, err);
     process.exit(1);
@@ -163,11 +174,9 @@ app.use((req, res, next) => {
   }
 });
 
-
 app.use((req, res, next) => {
   next(createError(404));
 });
-
 
 app.use((err, req, res, next) => {
   if (err.status === 404) {
@@ -179,6 +188,6 @@ app.use((err, req, res, next) => {
   } else {
     next(err);
   }
-});;
+});
 
 app.listen(PORT, () => console.log(`Online on: ${PORT}`));
