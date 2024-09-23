@@ -156,11 +156,29 @@ app.get('/images/*', (req, res) => {
 });
 
 app.use((req, res, next) => {
-    if (req.accepts('html')) {
-        res.status(404).sendFile(path.join(__dirname, 'main-web/errors/404/404.html'));
-    } else {
-        res.status(404).send('Resource not found');
-    }
+  if (req.accepts('html')) {
+    res.status(404).sendFile(path.join(__dirname, 'main-web/errors/404/404.html'));
+  } else {
+    res.status(404).send('Resource not found');
+  }
 });
+
+r
+app.use((req, res, next) => {
+  next(createError(404));
+});
+
+
+app.use((err, req, res, next) => {
+  if (err.status === 404) {
+    if (req.accepts('html')) {
+      res.status(404).sendFile(path.join(__dirname, 'main-web/errors/404/404.html'));
+    } else {
+      res.status(404).send('Resource not found');
+    }
+  } else {
+    next(err);
+  }
+});;
 
 app.listen(PORT, () => console.log(`Online on: ${PORT}`));
