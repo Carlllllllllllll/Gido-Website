@@ -131,7 +131,7 @@ try {
     });
 
     if (response.status === 401) {
-        alert('You are banned.');
+        alert('You are banned from submitting requests. Please contact support on Discord for more info: https://discord.gg/Gq48UpPrXH');
         return;
     }
 
