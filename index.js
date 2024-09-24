@@ -108,44 +108,49 @@ app.post('/api/support', async (req, res) => {
 
     const embed = {
         content: `<@&1287531476035960904>`,
-        embeds: [
-            {
-                title: "New Support Request!",
-                color: 0x3498db,
-                fields: [
-                    {
-                        name: "Nickname",
-                        value: nickname,
-                        inline: false
-                    },
-                    {
-                        name: "Email",
-                        value: email,
-                        inline: false
-                    },
-                    {
-                        name: "Description",
-                        value: description,
-                        inline: false
-                    },
-                    {
-                        name: "User ID",
-                        value: userId,
-                        inline: false
-                    },
-                    {
-                        name: "IP Address",
-                        value: ipAddress,
-                        inline: false
-                    }
-                ],
-                footer: {
-                    text: "Help Within 24 Hours!",
+       const embed = {
+    embeds: [
+        {
+            title: "New Support Request!",
+            color: 0x3498db,
+            fields: [
+                {
+                    name: "Nickname",
+                    value: nickname,
+                    inline: false
                 },
-                timestamp: new Date().toISOString()
+                {
+                    name: "Email",
+                    value: email,
+                    inline: false
+                },
+                {
+                    name: "Description",
+                    value: description,
+                    inline: false
+                },
+                {
+                    name: "User ID",
+                    value: userId,
+                    inline: false
+                },
+                {
+                    name: "IP Address",
+                    value: ipAddress,
+                    inline: false
+                }
+            ],
+            footer: {
+                text: "Help Within 24 Hours!",
+            },
+            timestamp: new Date().toISOString(),
+            image: {
+                url: "https://media.discordapp.net/attachments/1272578222164541460/1287239342984659005/standard_4.gif?ex=66f2cccf&is=66f17b4f&hm=2e6d26b6f1905e111e0f4ea29f5f24ce448fdf9b0cdeda9d021582d4546fdddc&=&width=550&height=194"  
             }
-        ]
-    };
+        }
+    ]
+};
+
 
     try {
         const response = await axios.post(webhookURL, embed);
