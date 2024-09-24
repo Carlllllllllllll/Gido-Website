@@ -19,8 +19,8 @@ body.dark-mode {
 
 body.dark-mode header {
     background: #17335c;
-    color: #e0e0e0;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 30%);
 }
 
 body.dark-mode nav a {
@@ -49,8 +49,8 @@ body.dark-mode .cta-section {
 }
 
 body.dark-mode footer {
-    background: #111;
-    color: #888;
+    background: #17335c;
+    color: #000000;
 }
 
 body.dark-mode #support-form {
@@ -401,21 +401,21 @@ body.dark-mode .feature-item {
     transform: scale(1.05);
 }
 
-/* Footer */
 footer {
-    background: #f1f1f1;
-    color: #333;
-    padding: 20px;
+    background: #17335c;
+    color: #000000;
+    padding: 10px; /* Reduced from 20px to 10px */
     text-align: center;
 }
 
+
 footer.dark-mode {
-    background: #111;
-    color: #888;
+    background: #cec1c1;
+    color: #000000;
 }
 
 footer a {
-    color: #4A63FF;
+    color: #00daff;
     text-decoration: none;
 }
 
@@ -446,7 +446,7 @@ body.dark-mode #bot-status {
     background-color: #4CAF50; /* Green background for the status indicator */
     border-radius: 12px;
     padding: 10px 20px;
-    color: white;
+    color: #ffffff;
     font-size: 1.5em;
     position: relative;
     overflow: hidden;
@@ -589,7 +589,7 @@ body.dark-mode #service-policy ul li {
     justify-content: center; /* Center content vertically */
     padding: 20px;
     background-color: #007bff; /* Blue background */
-    color: white; /* Text color for contrast */
+    color: #000000; /* Text color for contrast */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
     margin: 20px 0; /* Space around the card */
@@ -614,13 +614,13 @@ body.dark-mode #service-policy ul li {
 
 .developer-info p {
     margin: 5px 0 0; /* Spacing for the paragraph */
-    color: #e0e0e0; /* Lighter color for the rank */
+    color: #000000; /* Lighter color for the rank */
 }
 
 /* Dark Mode Adjustments */
 body.dark-mode .developer-card {
     background-color: #0056b3; /* Darker blue for dark mode */
-    color: white; /* Ensure text remains white */
+    color: #100b0b; /* Ensure text remains white */
 }
 /* Footer container */
 .footer {
