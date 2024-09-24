@@ -108,7 +108,7 @@ app.post('/api/support', async (req, res) => {
 
     const embed = {
         content: `<@&1287531476035960904>`,
-       const embed = {
+       channel.send({
     embeds: [
         {
             title: "New Support Request!",
@@ -145,11 +145,12 @@ app.post('/api/support', async (req, res) => {
             },
             timestamp: new Date().toISOString(),
             image: {
-                url: "https://media.discordapp.net/attachments/1272578222164541460/1287239342984659005/standard_4.gif?ex=66f2cccf&is=66f17b4f&hm=2e6d26b6f1905e111e0f4ea29f5f24ce448fdf9b0cdeda9d021582d4546fdddc&=&width=550&height=194"  
+                url: "https://media.discordapp.net/attachments/1272578222164541460/1287239342984659005/standard_4.gif?ex=66f2cccf&is=66f17b4f&hm=2e6d26b6f1905e111e0f4ea29f5f24ce448fdf9b0cdeda9d021582d4546fdddc&="
             }
         }
     ]
-};
+});
+
 
 
     try {
