@@ -108,8 +108,7 @@ app.post('/api/support', async (req, res) => {
 
     const embed = {
         content: `<@&1287531476035960904>`,
-       channel.send({
-    embeds: [
+         embeds: [
         {
             title: "New Support Request!",
             color: 0x3498db,
@@ -149,9 +148,7 @@ app.post('/api/support', async (req, res) => {
             }
         }
     ]
-});
-
-
+};
 
     try {
         const response = await axios.post(webhookURL, embed);
