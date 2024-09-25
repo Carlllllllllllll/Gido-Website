@@ -205,4 +205,158 @@ app.use((err, req, res, next) => {
     }
 });
 
+const userSessions = {};
+
+
+const logUserJoin = async (userId) => {
+    const currentTime = new Date();
+    userSessions[userId] = currentTime;
+
+    const joinMessage = `User with ID ${userId} joined the web at ${currentTime.toISOString()}.`;
+
+    const embed = {
+        content: `<@&1287531476035960904>`,
+        embeds: [
+            {
+                title: "User Joined",
+                color: 0x2ecc71, 
+                fields: [
+                    {
+                        name: "User ID",
+                        value: userId,
+                        inline: false,
+                    },
+                    {
+                        name: "Join Time",
+                        value: currentTime.toISOString(),
+                        inline: false,
+                    }
+                ],
+                timestamp: currentTime.toISOString(),
+            }
+        ]
+    };
+
+   
+    const webhookUrl = process.env.WEB_WEBHOOK;
+    try {
+        await axios.post(webhookUrl, embed);
+        console.log(`User ${userId} join message sent to webhook.`);
+    } catch (error) {
+        console.error('Error sending user join message:', error);
+    }
+};
+
+const logUserLeave = async (userId) => {
+    const leaveTime = new Date();
+    const joinTime = userSessions[userId];
+    
+    if (joinTime) {
+        const timeSpent = leaveTime - joinTime; 
+        const secondsSpent = Math.floor(timeSpent / 1000);
+        const minutesSpent = Math.floor(secondsSpent / 60);
+
+        const leaveMessage = `User with ID ${userId} left the web after ${minutesSpent} minutes and ${secondsSpent % 60} seconds.`;
+
+        const embed = {
+            content: `<@&1287531476035960904>`,
+            embeds: [
+                {
+                    title: "User Left",
+                    color: 0xe74c3c, 
+                    fields: [
+                        {
+                            name: "User ID",
+                            value: userId,
+                            inline: false,
+                        },
+                        {
+                            name: "Leave Time",
+                            value: leaveTime.toISOString(),
+                            inline: false,
+                        },
+                        {
+                            name: "Time Spent",
+                            value: `${minutesSpent} minutes and ${secondsSpent % 60} seconds`,
+                            inline: false,
+                        }
+                    ],
+                    timestamp: leaveTime.toISOString(),
+                }
+            ]
+        };
+
+        
+        const webhookUrl = process.env.WEB_WEBHOOK;
+        try {
+            await axios.post(webhookUrl, embed);
+            console.log(`User ${userId} leave message sent to webhook.`);
+        } catch (error) {
+            console.error('Error sending user leave message:', error);
+        }
+
+        
+        delete userSessions[userId];
+    }
+};
+    const errorsWebhookUrl = 'https://discord.com/api/webhooks/1288324754058514493/rbTTDmUZOoRDpOLjWbQhAiHiOxU-MylMM5ZkxnL8xg5YQTLHiGR_nw5EF-mD3cbtRkyD';
+
+    
+    window.onerror = function (message, source, lineno, colno, error) {
+        const errorDetails = {
+            content: 'Error Detected!',
+            embeds: [
+                {
+                    title: 'Error in Browser Console',
+                    color: 0xff0000, 
+                    fields: [
+                        { name: 'Error Message', value: message, inline: false },
+                        { name: 'Source', value: source, inline: false },
+                        { name: 'Line Number', value: lineno.toString(), inline: false },
+                        { name: 'Column Number', value: colno.toString(), inline: false },
+                        { name: 'Error Object', value: error ? error.toString() : 'N/A', inline: false }
+                    ],
+                    timestamp: new Date().toISOString()
+                }
+            ]
+        };
+
+       
+        fetch(errorsWebhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(errorDetails),
+        }).catch(err => console.error('Failed to send error to webhook:', err));
+    };
+
+
+    const originalConsoleError = console.error;
+    console.error = function (...args) {
+        const errorDetails = {
+            content: 'Console Error Detected!',
+            embeds: [
+                {
+                    title: 'Console Error',
+                    color: 0xff0000, 
+                    description: args.map(arg => arg.toString()).join(' '),
+                    timestamp: new Date().toISOString()
+                }
+            ]
+        };
+
+  
+        fetch(errorsWebhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(errorDetails),
+        }).catch(err => originalConsoleError('Failed to send error to webhook:', err));
+
+
+        originalConsoleError.apply(console, args);
+    };
+
 app.listen(PORT, () => console.log(`Online on: ${PORT}`));
