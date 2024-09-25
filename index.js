@@ -238,16 +238,15 @@ const logUserJoin = async (userId) => {
     };
 
    
-const io = require('socket.io')(httpServer); // Make sure you have initialized socket.io properly
-const axios = require('axios');
-const userSessions = {}; // Keep track of user sessions
+const io = require('socket.io')(httpServer); 
+const userSessions = {}; 
 
 io.on('connection', (socket) => {
-    const userId = socket.id; // Use socket ID or any user identifier
+    const userId = socket.id; 
 
-    // Handle user joining
+    
     const joinTime = new Date();
-    userSessions[userId] = joinTime; // Store the join time
+    userSessions[userId] = joinTime; 
     logUserJoin(userId);
 
     socket.on('disconnect', () => {
