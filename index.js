@@ -238,6 +238,49 @@ const logUserJoin = async (userId) => {
     };
 
    
+const io = require('socket.io')(httpServer); // Make sure you have initialized socket.io properly
+const axios = require('axios');
+const userSessions = {}; // Keep track of user sessions
+
+io.on('connection', (socket) => {
+    const userId = socket.id; // Use socket ID or any user identifier
+
+    // Handle user joining
+    const joinTime = new Date();
+    userSessions[userId] = joinTime; // Store the join time
+    logUserJoin(userId);
+
+    socket.on('disconnect', () => {
+        logUserLeave(userId);
+    });
+});
+
+const logUserJoin = async (userId) => {
+    const joinTime = new Date();
+    
+    const embed = {
+        content: `<@&1287531476035960904>`,
+        embeds: [
+            {
+                title: "User Joined",
+                color: 0x2ecc71, 
+                fields: [
+                    {
+                        name: "User ID",
+                        value: userId,
+                        inline: false,
+                    },
+                    {
+                        name: "Join Time",
+                        value: joinTime.toISOString(),
+                        inline: false,
+                    }
+                ],
+                timestamp: joinTime.toISOString(),
+            }
+        ]
+    };
+
     const webhookUrl = process.env.WEB_WEBHOOK;
     try {
         await axios.post(webhookUrl, embed);
@@ -255,8 +298,6 @@ const logUserLeave = async (userId) => {
         const timeSpent = leaveTime - joinTime; 
         const secondsSpent = Math.floor(timeSpent / 1000);
         const minutesSpent = Math.floor(secondsSpent / 60);
-
-        const leaveMessage = `User with ID ${userId} left the web after ${minutesSpent} minutes and ${secondsSpent % 60} seconds.`;
 
         const embed = {
             content: `<@&1287531476035960904>`,
@@ -286,7 +327,6 @@ const logUserLeave = async (userId) => {
             ]
         };
 
-        
         const webhookUrl = process.env.WEB_WEBHOOK;
         try {
             await axios.post(webhookUrl, embed);
@@ -295,7 +335,6 @@ const logUserLeave = async (userId) => {
             console.error('Error sending user leave message:', error);
         }
 
-        
         delete userSessions[userId];
     }
 };
