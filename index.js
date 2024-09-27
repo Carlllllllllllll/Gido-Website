@@ -73,6 +73,12 @@ app.get('/404.css', (req, res) => {
     res.sendFile(imagePath);
 });
 
+
+app.get('/aboutus.html', (req, res) => {
+    const imagePath = path.join(__dirname, 'main-web/aboutus.html');
+    res.sendFile(imagePath);
+});
+
 app.get('/styles.css', (req, res) => {
     const imagePath = path.join(__dirname, 'main-web/styles.css');
     res.sendFile(imagePath);
