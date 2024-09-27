@@ -65,6 +65,28 @@ document.addEventListener('DOMContentLoaded', () => {
             setActiveLink(targetId);
         });
     });
+    document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('service-policy').addEventListener('click', () => {
+        location.href = 'https://gido-bot-web.onrender.com/#service-policy';
+    });
+
+    document.getElementById('features').addEventListener('click', () => {
+        location.href = 'https://gido-bot-web.onrender.com/#features';
+    });
+
+    document.getElementById('bot-status').addEventListener('click', () => {
+        location.href = 'https://gido-bot-web.onrender.com/#bot-status';
+    });
+
+    document.getElementById('contact-support').addEventListener('click', () => {
+        location.href = 'https://gido-bot-web.onrender.com/#contact-support';
+    });
+
+    document.getElementById('developers').addEventListener('click', () => {
+        location.href = 'https://gido-bot-web.onrender.com/#developers';
+    });
+});
+
 
     handleScrollAnimation();
 
