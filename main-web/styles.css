@@ -963,9 +963,3 @@ body.dark-mode #about-us h2 {
 body.dark-mode #about-us p {
     color: #ccc; /* Dark mode paragraph color */
 }
-@media (max-width: 768px) {
-    .hero {
-        flex-direction: column;
-        height: auto; /* Adjust height for mobile */
-    }
-
