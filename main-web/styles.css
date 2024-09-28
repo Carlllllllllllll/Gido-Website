@@ -610,29 +610,59 @@ body.dark-mode #service-policy p,
 body.dark-mode #service-policy ul li {
     color: #e0e0e0;
 }
-/* Developer Card Styles */
 .developer-card {
     display: flex;
     flex-direction: column; /* Arrange items vertically */
     align-items: center; /* Center align items */
     justify-content: center; /* Center content vertically */
     padding: 20px;
-    background-color: #007bff; /* Blue background */
-    color: #000000; /* Text color for contrast */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    background: linear-gradient(135deg, #033a45, #001115); /* Dynamic gradient background */
+    color: #000000; /* Text color for better contrast */
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect */
     margin: 20px 0; /* Space around the card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animations on hover */
 }
+
+.developer-card:hover {
+    transform: translateY(-10px); /* Lift the card up slightly on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Increase shadow intensity on hover */
+}
+
+@keyframes backgroundShift {
+
+    50% {
+        background: linear-gradient(135deg, #033a45, #001115);
+    }
+
+}
+
+.developer-card {
+    animation: backgroundShift 5s infinite; /* Animates the background colors */
+}
+
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .developer-card {
+        padding: 15px;
+        margin: 15px 0;
+        width: 90%; /* Adjust width on smaller screens */
+    }
+}
+
 
 .developer-img {
     margin-bottom: 15px; /* Space below the image */
 }
 
 .circle-frame {
-    width: 100px; /* Set width */
-    height: 100px; /* Set height */
-    border-radius: 50%; /* Make it circular */
-    object-fit: cover; /* Ensure the image fits well */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .developer-info h3 {
@@ -648,8 +678,8 @@ body.dark-mode #service-policy ul li {
 
 /* Dark Mode Adjustments */
 body.dark-mode .developer-card {
-    background-color: #0056b3; /* Darker blue for dark mode */
-    color: #100b0b; /* Ensure text remains white */
+    background-color: #000000; /* Darker blue for dark mode */
+    color: #000000; /* Ensure text remains white */
 }
 /* Footer container */
 .footer {
