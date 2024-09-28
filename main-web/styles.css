@@ -616,7 +616,7 @@ body.dark-mode #service-policy ul li {
     align-items: center; /* Center align items */
     justify-content: center; /* Center content vertically */
     padding: 20px;
-    background: linear-gradient(135deg, #033a45, #001115); /* Dynamic gradient background */
+    background: linear-gradient(135deg, #033a45, #011c23); /* Dynamic gradient background */
     color: #000000; /* Text color for better contrast */
     border-radius: 12px; /* Slightly more rounded corners */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect */
@@ -632,7 +632,7 @@ body.dark-mode #service-policy ul li {
 @keyframes backgroundShift {
 
     50% {
-        background: linear-gradient(135deg, #033a45, #001115);
+        background: linear-gradient(135deg, #033a45, #011c23);
     }
 
 }
