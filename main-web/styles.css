@@ -790,30 +790,59 @@ footer {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 body {
-    scroll-padding-top: 100px; /* Default value for normal screens */
+    scroll-padding-top: 100px; /* Default for 100% zoom */
     scroll-behavior: smooth; /* Enables smooth scrolling */
 }
 
-/* For tablets and smaller screens */
-@media (max-width: 1024px) {
+/* Approximation for 85% zoom */
+@media (min-width: 1176px) and (max-width: 1366px) {
     body {
-        scroll-padding-top: 80px; /* Adjust based on your header height for tablets */
+        scroll-padding-top: 85px; /* Adjust to match 85% zoom */
     }
 }
 
-/* For mobile devices */
-@media (max-width: 768px) {
+/* Approximation for 90% zoom */
+@media (min-width: 1222px) and (max-width: 1440px) {
     body {
-        scroll-padding-top: 60px; /* Adjust based on your header height for mobile */
+        scroll-padding-top: 90px; /* Adjust to match 90% zoom */
     }
 }
 
-/* For very small devices */
-@media (max-width: 480px) {
+/* Approximation for 110% to 125% zoom */
+@media (max-width: 1080px) and (min-width: 900px) {
     body {
-        scroll-padding-top: 40px; /* Further adjustment for very small screens */
+        scroll-padding-top: 110px; /* Adjust for 110% zoom */
     }
 }
+
+/* Approximation for 150% zoom */
+@media (max-width: 720px) {
+    body {
+        scroll-padding-top: 125px; /* Adjust for 150% zoom */
+    }
+}
+
+/* Approximation for 200% zoom */
+@media (max-width: 540px) {
+    body {
+        scroll-padding-top: 150px; /* Adjust for 200% zoom */
+    }
+}
+
+/* Approximation for 300% zoom */
+@media (max-width: 360px) {
+    body {
+        scroll-padding-top: 200px; /* Adjust for 300% zoom */
+    }
+}
+
+/* Approximation for 400-500% zoom */
+@media (max-width: 270px) {
+    body {
+        scroll-padding-top: 250px; /* Adjust for 400-500% zoom */
+    }
+}
+
 /* Offset Sections for Fixed Header */
 section {
   
