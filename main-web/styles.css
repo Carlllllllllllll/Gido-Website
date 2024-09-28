@@ -235,6 +235,8 @@ nav a.dark-mode {
     color: #ffffff;
 }
 
+
+
 nav a.active.dark-mode, nav a:hover.dark-mode {
     background-color: #3b3bff;
     color: #ffffff;
@@ -375,31 +377,58 @@ body.dark-mode .feature-item {
     font-weight: bold;
 }
 
+
+#support-form {
+    max-width: 600px;                  /* Set a max width for the form */
+    margin: auto;                       /* Center the form */
+    padding: 20px;                     /* Add padding to the form */
+    background-color: #f9f9f9;         /* Light background for contrast */
+    border-radius: 8px;                /* More pronounced rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
 #support-form input, 
 #support-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    max-width: 576px;
+    width: 100%;                       /* Full width of the parent */
+    padding: 12px;                    /* Increased padding for a more spacious feel */
+    margin-bottom: 15px;              /* Space between inputs */
+    border: 1px solid #ccc;           /* Border color */
+    border-radius: 6px;               /* Rounded corners */
+    max-width: 100%;                  /* Optional: limit max width to full parent */
+    box-sizing: border-box;           /* Include padding and border in the element's total width */
+    font-size: 1em;                   /* Consistent font size */
+    transition: border-color 0.3s;    /* Transition for border color on focus */
+}
+
+#support-form input:focus, 
+#support-form textarea:focus {
+    border-color: #4A63FF;            /* Change border color on focus */
+    outline: none;                    /* Remove default outline */
+    box-shadow: 0 0 5px rgba(74, 99, 255, 0.5); /* Subtle glow effect */
 }
 
 #support-form button {
-    background: #4A63FF;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    background: #4A63FF;               /* Primary button color */
+    color: #ffffff;                    /* Button text color */
+    padding: 12px 24px;                /* Slightly increased padding */
+    border: none;                      /* Remove border */
+    border-radius: 6px;               /* Rounded corners */
+    font-size: 1em;                   /* Consistent font size */
+    cursor: pointer;                   /* Pointer cursor for interactivity */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
 }
 
 #support-form button:hover {
-    background-color: #3b3bff;
-    transform: scale(1.05);
+    background-color: #3b3bff;         /* Darker color on hover */
+    transform: scale(1.05);            /* Slight scale on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
+
+#support-form button:active {
+    transform: scale(0.95);            /* Slightly shrink on click */
+}
+
 
 footer {
     background: #17335c;
@@ -732,6 +761,7 @@ footer {
 }
 body {
     scroll-padding-top: 100px; /* Default value for normal screens */
+    scroll-behavior: smooth; /* Enables smooth scrolling */
 }
 
 /* For tablets and smaller screens */
@@ -754,10 +784,11 @@ body {
         scroll-padding-top: 40px; /* Further adjustment for very small screens */
     }
 }
-
-
 /* Offset Sections for Fixed Header */
 section {
+  
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
     scroll-margin-top: 100px; /* Adjust based on your header height */
     padding: 20px; /* Add padding for better layout */
     background: #ffffff; /* Example background color */
@@ -800,7 +831,7 @@ section {
     border: 2px solid #0015ff; /* Thicker border with a contrasting color */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 2px 5px rgb(255 255 255 / 10%); /* Subtle shadow for depth */
-    margin: 20px 0; /* Space between sections */
+    margin: 10px 0; /* Space between sections */
 }
 
 /* Optional: Center the section title */
@@ -902,3 +933,9 @@ body.dark-mode #about-us h2 {
 body.dark-mode #about-us p {
     color: #ccc; /* Dark mode paragraph color */
 }
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        height: auto; /* Adjust height for mobile */
+    }
+
