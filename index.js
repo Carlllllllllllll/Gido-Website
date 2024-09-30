@@ -4,6 +4,7 @@ const path = require('path');
 const crypto = require('crypto');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const axios = require('axios');
 const app = express();
 const PORT = 8080;
