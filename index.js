@@ -104,6 +104,9 @@ const corsOptions = {
     credentials: true, // If you need to send cookies or authentication info
 };
 
+// Apply CORS middleware
+app.use(cors(corsOptions));
+
 app.get('/', (req, res) => {
     res.setHeader('Content-Security-Policy', `style-src 'self' 'nonce-${res.locals.nonce}'`);
     const imagePath = path.join(__dirname, 'main-web/index.html');
