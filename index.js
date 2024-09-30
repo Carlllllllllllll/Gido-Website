@@ -57,7 +57,7 @@ app.use(helmet({
             imgSrc: ["'self'", "https://gido-bot-web.onrender.com", "data:", "https://cdn.discordapp.com", "https://images-ext-1.discordapp.net", "https://media.discordapp.net/attachments/", "https://media.discordapp.net/", "/images/"],
             connectSrc: ["'self'", "https://gido-bot-web.onrender.com", "https://fetch-bot-fvty.onrender.com/"],
             scriptSrc: ["'self'", "https://gido-bot-web.onrender.com"],
-            styleSrc: ["'self'", (req, res) => `'nonce-${res.locals.nonce}'`, "https://gido-web.ooguy.com/"],
+            styleSrc: ["'self'", (req, res) => `'nonce-${res.locals.nonce}'`, "https://gido-web.ooguy.com"],
         },
     },
 }));
