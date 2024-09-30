@@ -45,45 +45,55 @@ const checkIfBanned = async (userId) => {
 
 const generateNonce = () => crypto.randomBytes(16).toString('base64');
 
-app.use((req, res, next) => {
-    res.locals.nonce = generateNonce();
-    next();
-});
+const allowedOrigins = [
+  'https://gido-web.ooguy.com',
+  'https://asdfasdfasfasdfdasfwdasdi.onrender.com'
+];
 
+app.use(cors({
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
+// Helmet configuration
 app.use(helmet({
-    contentSecurityPolicy: {
-       directives: {
-  defaultSrc: ["'none'"],
-  imgSrc: [
-    "'self'",
-    "https://gido-web.ooguy.com",
-    "data:",
-    "https://cdn.discordapp.com",
-    "https://images-ext-1.discordapp.net",
-    "https://media.discordapp.net/attachments/",
-    "https://media.discordapp.net/",
-    "/images/"
-  ],
-  connectSrc: [
-    "'self'",
-    "https://gido-web.ooguy.com",
-    "https://fetch-bot-fvty.onrender.com",
-    "https://asdfasdfasfasdfdasfwdasdi.onrender.com"
-  ],
-  scriptSrc: [
-    "'self'",
-    "https://gido-web.ooguy.com",
-    "https://asdfasdfasfasdfdasfwdasdi.onrender.com"
-  ],
-  styleSrc: [
-    "'self'",
-    (req, res) => `'nonce-${res.locals.nonce}'`,
-    "https://gido-web.ooguy.com",
-    "https://asdfasdfasfasdfdasfwdasdi.onrender.com"
-  ]
-},
-
-    },
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'none'"],
+      imgSrc: [
+        "'self'",
+        "https://gido-web.ooguy.com",
+        "data:",
+        "https://cdn.discordapp.com",
+        "https://images-ext-1.discordapp.net",
+        "https://media.discordapp.net/attachments/",
+        "https://media.discordapp.net/",
+        "/images/"
+      ],
+      connectSrc: [
+        "'self'",
+        "https://gido-web.ooguy.com",
+        "https://fetch-bot-fvty.onrender.com",
+        "https://asdfasdfasfasdfdasfwdasdi.onrender.com"
+      ],
+      scriptSrc: [
+        "'self'",
+        "https://gido-web.ooguy.com",
+        "https://asdfasdfasfasdfdasfwdasdi.onrender.com"
+      ],
+      styleSrc: [
+        "'self'",
+        (req, res) => `'nonce-${res.locals.nonce}'`,
+        "https://gido-web.ooguy.com",
+        "https://asdfasdfasfasdfdasfwdasdi.onrender.com"
+      ]
+    }
+  }
 }));
 
 app.get('/', (req, res) => {
