@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const description = formData.get('user-description');
 
 try {
-    const response = await fetch('https://gido-web.ooguy.com//api/support', {
+    const response = await fetch('https://gido-web.ooguy.com/api/support', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
