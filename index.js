@@ -58,7 +58,9 @@ app.use(helmet({
             imgSrc: [
                 "'self'", 
                 "https://gido-web.ooguy.com", 
+                "https://gido-web.ooguy.com/", // with trailing slash
                 "https://asdfasdfasfasdfdasfwdasdi.onrender.com", 
+                "https://asdfasdfasfasdfdasfwdasdi.onrender.com/", // with trailing slash
                 "data:", 
                 "https://cdn.discordapp.com", 
                 "https://images-ext-1.discordapp.net", 
@@ -68,31 +70,39 @@ app.use(helmet({
             connectSrc: [
                 "'self'", 
                 "https://gido-web.ooguy.com", 
+                "https://gido-web.ooguy.com/", // with trailing slash
                 "https://fetch-bot-fvty.onrender.com", 
-                "https://asdfasdfasfasdfdasfwdasdi.onrender.com"
+                "https://asdfasdfasfasdfdasfwdasdi.onrender.com", 
+                "https://asdfasdfasfasdfdasfwdasdi.onrender.com/" // with trailing slash
             ],
             scriptSrc: [
                 "'self'", 
                 "https://gido-web.ooguy.com", 
+                "https://gido-web.ooguy.com/", // with trailing slash
                 "https://asdfasdfasfasdfdasfwdasdi.onrender.com"
             ],
             styleSrc: [
                 "'self'", 
                 (req, res) => `'nonce-${res.locals.nonce}'`, 
                 "https://gido-web.ooguy.com", 
+                "https://gido-web.ooguy.com/", // with trailing slash
                 "https://asdfasdfasfasdfdasfwdasdi.onrender.com"
             ],
         },
     },
 }));
 
+// CORS configuration
 const corsOptions = {
-    origin: ['https://gido-web.ooguy.com', 'https://asdfasdfasfasdfdasfwdasdi.onrender.com'],
+    origin: [
+        'https://gido-web.ooguy.com', 
+        'https://gido-web.ooguy.com/', // with trailing slash
+        'https://asdfasdfasfasdfdasfwdasdi.onrender.com', 
+        'https://asdfasdfasfasdfdasfwdasdi.onrender.com/' // with trailing slash
+    ],
     optionsSuccessStatus: 200,
+    credentials: true, // If you need to send cookies or authentication info
 };
-
-app.use(cors(corsOptions));
-
 
 app.get('/', (req, res) => {
     res.setHeader('Content-Security-Policy', `style-src 'self' 'nonce-${res.locals.nonce}'`);
