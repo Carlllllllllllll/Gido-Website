@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const remainingTime = tenHours - (now - lastReportTime);
                     const hours = Math.floor(remainingTime / (60 * 60 * 1000));
                     const minutes = Math.floor((remainingTime % (60 * 60 * 1000)) / (60 * 1000));
-                    alert(`You can use this button only twice every 10 hours. Please try again in ${hours} hour(s) and ${minutes} minute(s).`);
+                    alert(`You can only report twice every 10 hours. Please try again in ${hours} hour(s) and ${minutes} minute(s).`);
                     return;
                 } else {
                     localStorage.setItem('reportCount', reportCount + 1);
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const description = formData.get('user-description');
 
 try {
-    const response = await fetch('https://gido-bot-web.onrender.com/api/support', {
+    const response = await fetch('https://gido-web.ooguy.com/api/support', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
