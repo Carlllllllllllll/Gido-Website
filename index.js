@@ -62,7 +62,7 @@ app.use(helmet({
     },
 }));
 
-app.get('/', (req, res) => {
+app.get('', (req, res) => {
     res.setHeader('Content-Security-Policy', `style-src 'self' 'nonce-${res.locals.nonce}'`);
     const imagePath = path.join(__dirname, 'main-web/index.html');
     res.sendFile(imagePath);
