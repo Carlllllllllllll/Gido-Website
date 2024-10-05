@@ -74,12 +74,12 @@ app.get('/404.css', (req, res) => {
 });
 
 
-app.get('/Terms-of-Service.html', (req, res) => {
+app.get('/Terms-of-Service', (req, res) => {
     const imagePath = path.join(__dirname, 'main-web/Terms-of-Service.html');
     res.sendFile(imagePath);
 });
 
-app.get('/aboutus.html', (req, res) => {
+app.get('/aboutus', (req, res) => {
     const imagePath = path.join(__dirname, 'main-web/aboutus.html');
     res.sendFile(imagePath);
 });
