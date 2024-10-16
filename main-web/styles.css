@@ -1,0 +1,1721 @@
+html, body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    height: 100%;
+    min-height: 100%;
+    background: #ffffff;
+    color: #101010;
+    scroll-behavior: smooth;
+}
+
+
+body.dark-mode {
+    background: #000000;
+    color: #e0e0e0;
+}
+
+body.dark-mode header {
+    background: #17335c;
+    color: #a2d1f2;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 30%);
+}
+
+body.dark-mode nav a {
+    color: #e0e0e0;
+}
+
+body.dark-mode nav a.active, 
+body.dark-mode nav a:hover {
+    background-color: #3b3bff;
+    color: #ffffff;
+}
+
+body.dark-mode .hero {
+    background: #17335c;
+    color: #e0e0e0;
+}
+
+body.dark-mode .features {
+    background: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .cta-section {
+    background: #222;
+    color: #e0e0e0;
+}
+
+body.dark-mode footer {
+    background: #17335c;
+    color: #000000;
+}
+
+body.dark-mode #support-form {
+    background: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode #support-form input, 
+body.dark-mode #support-form textarea {
+    border: 1px solid #555;
+    background: #444;
+}
+
+body.dark-mode #support-form button {
+    background: #3b3bff;
+}
+
+header {
+    background: #17335c;
+    color: #a2d1f2;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left img {
+    height: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.header-left h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    margin-left: 10px;
+}
+
+header.hidden {
+    transform: translateY(-100%);
+}
+
+.header-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #000000;
+    transition: opacity 0.3s, transform 0.3s;
+    position: fixed;
+    right: 20px;
+    top: 15px;
+    z-index: 1100;
+    animation: pulse 1.5s infinite;
+}
+
+.dark-mode-toggle {
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1em;
+    color: #333;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: absolute; 
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 1100;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dark-mode-toggle:hover {
+    color: #333; 
+    transform: scale(1.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    background-color: transparent; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dark-mode-toggle:active {
+    transform: scale(0.9);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    background-color: transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dark-mode .dark-mode-toggle {
+    color: #ffffff; 
+}
+
+.dark-mode .dark-mode-toggle:hover {
+    color: #ffffff; 
+    background-color: transparent; /
+}
+.header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.bot-icon {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 3px solid #5181a3;
+    transition: transform 0.3s, margin-left 0.3s;
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bot-icon:hover {
+    transform: scale(1.1);
+}
+
+header h1 {
+    margin-left: 10px;
+    font-size: 2em;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header h1:hover {
+    color: #d3d3d3;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 0;
+    justify-content: center;
+}
+
+nav a {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+    display: inline-block;
+    z-index: 1000;
+}
+
+nav a.active, nav a:hover {
+    background-color: #3b3bff;
+    color: #ffffff;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+header.dark-mode {
+    background: #1e1e1e;
+}
+
+nav a.dark-mode {
+    color: #ffffff;
+}
+
+
+
+
+nav a.active.dark-mode, nav a:hover.dark-mode {
+    background-color: #3b3bff;
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hero {
+    background: #17335c;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    animation: slideIn 1s ease-out;
+}
+
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+}
+
+.cta {
+    display: inline-block;
+    background: #5865f2;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta:hover {
+    background-color: #3b3bff;
+    transform: scale(1.05);
+}
+
+
+.features {
+    padding: 60px 20px;
+    background: #fffdfd; 
+    color: #222; 
+}
+
+body.dark-mode .features {
+    background: #222; 
+    color: #e0e0e0; 
+}
+
+.features h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 40px;
+    color: inherit; 
+}
+
+.feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.feature-item {
+    background: #007bff; 
+    border-radius: 10px; 
+    padding: 20px;
+    margin: 10px;
+    max-width: 300px;
+    text-align: center;
+    color: #0c0c0c; 
+    transition: transform 0.3s, background-color 0.3s, color 0.3s; 
+}
+
+body.dark-mode .feature-item {
+    background: #0056b3;
+    color: #ffffff; 
+}
+
+.feature-item h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: inherit; 
+}
+
+.feature-item p {
+    color: inherit; 
+}
+
+/* Hover effect for individual feature items */
+.feature-item:hover {
+    transform: scale(1.05) translateY(-5px); /* Slight scale up and upward movement */
+    background: #0056b3; /* Change background color on hover */
+    color: #ffffff; /* Change text color on hover */
+}
+
+
+
+
+
+.cta-section {
+    padding: 60px 20px;
+    background: #ffffff;
+    color: #333;
+    text-align: center;
+}
+
+.cta-section.dark-mode {
+    background: #222;
+    color: #e0e0e0;
+}
+
+.cta-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+
+#support-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 40px;
+}
+
+#support-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+#support-form {
+    max-width: 600px;                 
+    margin: auto;                      
+    padding: 20px;                     
+    background-color: #f9f9f9;        
+    border-radius: 8px;                
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+}
+
+#support-form input, 
+#support-form textarea {
+    width: 100%;                       
+    padding: 12px;                    /* Increased padding for a more spacious feel */
+    margin-bottom: 15px;              /* Space between inputs */
+    border: 1px solid #ccc;           /* Border color */
+    border-radius: 6px;               /* Rounded corners */
+    max-width: 100%;                  /* Optional: limit max width to full parent */
+    box-sizing: border-box;           /* Include padding and border in the element's total width */
+    font-size: 1em;                   /* Consistent font size */
+    transition: border-color 0.3s;    /* Transition for border color on focus */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#support-form input:focus, 
+#support-form textarea:focus {
+    border-color: #4A63FF;            /* Change border color on focus */
+    outline: none;                    /* Remove default outline */
+    box-shadow: 0 0 5px rgba(74, 99, 255, 0.5); /* Subtle glow effect */
+}
+
+#support-form button {
+    background: #4A63FF;               /* Primary button color */
+    color: #ffffff;                    /* Button text color */
+    padding: 12px 24px;                /* Slightly increased padding */
+    border: none;                      /* Remove border */
+    border-radius: 6px;               /* Rounded corners */
+    font-size: 1em;                   /* Consistent font size */
+    cursor: pointer;                   /* Pointer cursor for interactivity */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+#support-form button:hover {
+    background-color: #3b3bff;         /* Darker color on hover */
+    transform: scale(1.05);            /* Slight scale on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+#support-form button:active {
+    transform: scale(0.95);            /* Slightly shrink on click */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+    background: #17335c;
+    color: #000000;
+    padding: 10px; /* Reduced from 20px to 10px */
+    text-align: center;
+}
+
+
+footer.dark-mode {
+    background: #cec1c1;
+    color: #000000;
+}
+
+footer a {
+    color: #00daff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Bot Status Section */
+#bot-status {
+    padding: 60px 20px;
+    background: #fffdfd;
+    color: #222;
+    text-align: center;
+}
+
+body.dark-mode #bot-status {
+    background: #222;
+    color: #fffefe;
+}
+
+#bot-status h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.status-indicator {
+    display: inline-block;
+    background-color: #4CAF50; /* Green background for the status indicator */
+    border-radius: 12px;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-size: 1.5em;
+    position: relative;
+    overflow: hidden;
+    animation: pulse 1.5s infinite;
+}
+
+.status-text {
+    position: relative;
+    z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Modernized Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    40% {
+        transform: scale(1.15);
+        opacity: 0.8;
+    }
+    60% {
+        transform: scale(0.95);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Applying the animation */
+.element {
+    animation: pulse 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+
+/* Scroll Menu */
+#scroll-menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4A63FF;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#scroll-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#scroll-menu li {
+    margin: 10px 0;
+}
+
+#scroll-menu a {
+    color: white;
+    text-decoration: none;
+}
+
+#scroll-menu a.active {
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
+}
+
+
+
+
+
+.developer-card {
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center align items */
+    justify-content: center; /* Center content vertically */
+    padding: 20px;
+    background: linear-gradient(135deg, #033a45, #012a3b); /* Dynamic gradient background */
+    color: #ffffff; /* Text color for better contrast */
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect */
+    margin: 20px 0; /* Space around the card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animations on hover */
+}
+
+/* Developer card hover effect */
+.developer-card {
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                filter 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                background 5s ease-in-out;
+    animation: backgroundShift 10s ease-in-out infinite alternate; /* Smooth background animation */
+    background: linear-gradient(135deg, #048f9b, #012a3b);
+    border-radius: 12px; /* Adding rounded corners for a modern look */
+}
+
+/* Improved hover effect for developer card */
+.developer-card:hover {
+    transform: translateY(-12px) scale(1.08) rotate(-2deg); /* Subtle 3D-like effect */
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6), 0 8px 16px rgba(0, 0, 0, 0.2); /* More layered shadow effect */
+    filter: brightness(1.15) saturate(1.1); /* Boost brightness and colors for a more vibrant effect */
+}
+
+/* Keyframe for smooth background gradient shift */
+@keyframes backgroundShift {
+    0% {
+        background: linear-gradient(135deg, #046e7a, #033a45);
+    }
+    50% {
+        background: linear-gradient(135deg, #046e7a, #033a45);
+    }
+    100% {
+        background: linear-gradient(135deg, #048f9b, #033a45);
+    }
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .developer-card {
+        padding: 15px;
+        margin: 15px 0;
+        width: 90%; /* Adjust width on smaller screens */
+        transform: none; /* Disable the hover transform on mobile for better usability */
+    }
+
+    .developer-card:hover {
+        transform: none; /* Disable hover transform for mobile */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Slightly reduce shadow effect on smaller screens */
+    }
+}
+
+
+
+.developer-img {
+    margin-bottom: 15px; /* Space below the image */
+}
+
+.circle-frame {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.developer-info h3 {
+    margin: 0; /* Remove default margin */
+    font-size: 1.5em; /* Adjust font size */
+    text-align: center; /* Center text */
+}
+
+.developer-info p {
+    margin: 5px 0 0; /* Spacing for the paragraph */
+    color: #ffffff; /* Lighter color for the rank */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Dark Mode Adjustments */
+body.dark-mode .developer-card {
+    background-color: #10e2ff; /* Darker blue for dark mode */
+    color: #ffffff; /* Ensure text remains white */
+}
+/* Footer container */
+.footer {
+    display: flex;
+    justify-content: left;
+    align-items: flex-start; /* Align items at the top */
+    padding: 5px 20px; /* Reduced padding for a smaller footer */
+    background-color: #f1f1f1; /* Light background */
+    height: 60px; /* Make the footer smaller */
+    overflow: hidden; /* Ensure everything stays inside the footer */
+}
+
+/* Footer icons container */
+.footer-icons {
+    display: flex;
+    gap: 20px; /* Space between icons */
+    margin-top: -20px; /* Move the icons higher */
+}
+
+/* Icons styling */
+.footer-icons img {
+width: 73px;
+height: 40px;
+    animation: float 3s ease-in-out infinite; /* Continuous up-and-down animation */
+    transition: transform 0.3s ease, animation 0.3s ease, opacity 0.3s ease; /* Smooth hover transition */
+}
+
+/* Hover effect: icons zoom in, animation stops */
+.footer-icons img:hover {
+    animation-play-state: paused; /* Stop the animation on hover */
+    transform: scale(1.8); /* Zoom in on hover */
+    opacity: 1; /* Full opacity */
+}
+
+/* Keyframes for a subtle floating effect */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0); /* Start at the original position */
+    }
+    50% {
+        transform: translateY(-5px); /* Slight upward movement */
+    }
+}
+
+/* Media queries to adjust icon position based on resolution */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .footer-icons {
+        margin-top: 10px; /* Adjust margin for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-icons {
+        gap: 10px; /* Reduce space between icons on very small screens */
+    }
+}
+
+
+/* Transition Effects */
+body {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+
+
+/* Navigation Links */
+nav a {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Hero Section */
+.hero {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Features Section */
+.features {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* CTA Section */
+.cta-section {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Footer */
+footer {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Form */
+#support-form {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Developer Card */
+.developer-card {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+
+html {
+    scroll-padding-top: 100px; /* Default for 100% zoom */
+    scroll-behavior: smooth; /* Enables smooth scrolling */
+}
+
+
+
+/* Features section specific padding */
+#features {
+    scroll-margin-top: 130px; /* Adjust as needed */
+}
+
+/* Approximation for 85% zoom */
+@media (min-width: 1176px) and (max-width: 1366px) {
+    html {
+        scroll-padding-top: 85px; /* Adjust to match 85% zoom */
+    }
+
+
+    #features {
+        scroll-margin-top: 110px; /* Adjust as needed for 85% zoom */
+    }
+}
+
+/* Approximation for 90% zoom */
+@media (min-width: 1222px) and (max-width: 1440px) {
+    html {
+        scroll-padding-top: 90px; /* Adjust to match 90% zoom */
+    }
+
+
+
+    #features {
+        scroll-margin-top: 115px; /* Adjust as needed for 90% zoom */
+    }
+}
+
+/* Approximation for 110% to 125% zoom */
+@media (max-width: 1080px) and (min-width: 900px) {
+    html {
+        scroll-padding-top: 110px; /* Adjust for 110% zoom */
+    }
+
+
+
+    #features {
+        scroll-margin-top: 125px; /* Adjust as needed for 110% zoom */
+    }
+}
+
+/* Approximation for 150% zoom */
+@media (max-width: 720px) {
+    html {
+        scroll-padding-top: 125px; /* Adjust for 150% zoom */
+    }
+
+
+
+    #features {
+        scroll-margin-top: 145px; /* Adjust as needed for 150% zoom */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Approximation for 200% zoom */
+@media (max-width: 540px) {
+    html {
+        scroll-padding-top: 150px; /* Adjust for 200% zoom */
+    }
+
+
+
+    #features {
+        scroll-margin-top: 1630px; /* Adjust as needed for 200% zoom */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Approximation for 300% zoom */
+@media (max-width: 360px) {
+    html {
+        scroll-padding-top: 200px; /* Adjust for 300% zoom */
+    }
+
+
+    #features {
+        scroll-margin-top: 2445px; /* Adjust as needed for 300% zoom */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Approximation for 400-500% zoom */
+@media (max-width: 270px) {
+    html {
+        scroll-padding-top: 250px; /* Adjust for 400-500% zoom */
+    }
+
+
+
+    #features {
+        scroll-margin-top: 3260px; /* Adjust as needed for 400-500% zoom */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Offset Sections for Fixed Header */
+section {
+  
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    scroll-margin-top: 100px; /* Adjust based on your header height */
+    padding: 20px; /* Add padding for better layout */
+    background: #ffffff; /* Example background color */
+    border: 2px solid #0015ff; /* Thicker border with a contrasting color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgb(255 255 255 / 10%); /* Subtle shadow for depth */
+    margin: 20px 0; /* Space between sections */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Optional: Center the section title */
+section h2 {
+    text-align: center; /* Center align section titles */
+    margin: 0; /* Remove default margins for h2 */
+    padding-bottom: 10px; /* Space between title and content */
+    
+}
+/* Offset Sections for Fixed Header */
+section {
+    scroll-margin-top: 100px; /* Adjust based on your header height */
+    padding: 20px; /* Add padding for better layout */
+    background: #ffffff; /* Example background color */
+    border: 2px solid #0015ff; /* Thicker border with a contrasting color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgb(255 255 255 / 10%); /* Subtle shadow for depth */
+    margin: 20px 0; /* Space between sections */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Optional: Center the section title */
+section h2 {
+    text-align: center; /* Center align section titles */
+    margin: 0; /* Remove default margins for h2 */
+    padding-bottom: 10px; /* Space between title and content */
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* General Section Styling */
+section {
+    scroll-margin-top: 30vh; /* Adjust based on your header height */
+    padding: 20px; /* Add padding for better layout */
+    background: #ffffff; /* Example background color */
+    border: 2px solid #0015ff; /* Thicker border with a contrasting color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgb(255 255 255 / 10%); /* Subtle shadow for depth */
+    margin: 10px 0; /* Space between sections */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Optional: Center the section title */
+section h2 {
+    text-align: center; /* Center align section titles */
+    margin: 0; /* Remove default margins for h2 */
+    padding-bottom: 10px; /* Space between title and content */
+}
+
+/* Service Policy Styling - applied to both sections */
+
+
+/* Merge the two service-policy sections visually */
+.service-policy + .service-policy {
+    margin-top: -44px; /* Remove space between sections */
+    border-top: none; /* Remove the top border of the second section */
+    padding-top: 0; /* Remove top padding of the second section */
+    border-radius: 0 0 8px 8px; /* Apply rounding only to the bottom of the second section */
+}
+
+/* First section needs rounded corners only at the top */
+.service-policy:first-of-type {
+    border-radius: 8px 8px 0 0;
+}
+
+/* Remove extra bottom margin to prevent large spacing */
+.service-policy:last-of-type {
+    margin-bottom: 0;
+}
+/* About Us Section Styles */
+.about-us {
+    background-color: #f7f7f7; /* Light gray background */
+    padding: 60px 20px; /* Padding for space inside the section */
+    text-align: center; /* Center-align text */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 20px 0; /* Space between sections */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.about-us h2 {
+    font-size: 2.5em; /* Large font size for the section title */
+    color: #333; /* Dark text color */
+    margin-bottom: 20px; /* Space below the title */
+}
+
+.about-us p {
+    font-size: 1.2em; /* Larger font size for readability */
+    color: #666; /* Medium gray text color */
+    line-height: 1.6; /* Improve text readability */
+    max-width: 800px; /* Limit width for better readability */
+    margin: 0 auto; /* Center the text */
+}
+/* About Us Section */
+#about-us {
+    padding: 90px 20px;
+    background: #f9f9f9; /* Light mode background */
+    color: #333; /* Light mode text color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 100px px ;
+    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease; /* Smooth transition */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#about-us h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333; /* Light mode heading color */
+    transition: color 0.5s ease; /* Heading transition */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#about-us p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 20px;
+    color: #555; /* Light mode paragraph color */
+    transition: color 0.5s ease; /* Paragraph transition */
+}
+
+/* Dark Mode */
+body.dark-mode #about-us {
+    background: #222; /* Dark mode background */
+    color: #e0e0e0; /* Dark mode text color */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Stronger shadow for dark mode */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body.dark-mode #about-us h2 {
+    color: #fff; /* Dark mode heading color */
+}
+
+body.dark-mode #about-us p {
+    color: #ccc; /* Dark mode paragraph color */
+}
+.gido-tos {
+    background-color: #f7f7f7; /* Light gray background */
+    padding: 60px 20px; /* Padding for space inside the section */
+    text-align: center; /* Center-align text */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 20px 0; /* Space between sections */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* About Us Section Styles */
+.service-policy {
+    background-color: #f7f7f7; /* Light gray background */
+    padding: 60px 20px; /* Padding for space inside the section */
+    text-align: center; /* Center-align text */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 20px 0; /* Space between sections */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.service-policy h2 {
+    font-size: 2.5em; /* Large font size for the section title */
+    color: #333; /* Dark text color */
+    margin-bottom: 30px; /* Space below the title */
+}
+
+.service-policy p {
+    font-size: 1.2em; /* Larger font size for readability */
+    color: #666; /* Medium gray text color */
+    line-height: 1.6; /* Improve text readability */
+    max-width: 800px; /* Limit width for better readability */
+    margin: 0px auto; /* Center the text */
+}
+/* About Us Section */
+#service-policy {
+    padding: 90px 20px;
+    background: #f9f9f9; /* Light mode background */
+    color: #333; /* Light mode text color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 100000px px ;
+    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease; /* Smooth transition */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#service-policy h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20x;
+    color: #333; /* Light mode heading color */
+    transition: color 0.5s ease; /* Heading transition */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#service-policy p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 20px;
+    color: #555; /* Light mode paragraph color */
+    transition: color 0.5s ease; /* Paragraph transition */
+}
+
+/* Dark Mode */
+body.dark-mode #service-policy {
+    background: #222; /* Dark mode background */
+    color: #e0e0e0; /* Dark mode text color */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Stronger shadow for dark mode */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body.dark-mode #service-policy h2 {
+    color: #fff; /* Dark mode heading color */
+}
+
+body.dark-mode #service-policy p {
+    color: #ccc; /* Dark mode paragraph color */
+}
+
+
+.gido-tos h2 {
+    font-size: 2.5em; /* Large font size for the section title */
+    color: #333; /* Dark text color */
+    margin-bottom: 20px; /* Space below the title */
+}
+
+.gido-tos p {
+    font-size: 1.2em; /* Larger font size for readability */
+    color: #000000; /* Medium gray text color */
+    line-height: 1.6; /* Improve text readability */
+    max-width: 800px; /* Limit width for better readability */
+    margin: 0 auto; /* Center the text */
+}
+/* About Us Section */
+#gido-tos {
+    padding: 90px 20px;
+    background: #ffffff; /* Light mode background */
+    color: #000000; /* Light mode text color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 100px px ;
+    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease; /* Smooth transition */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#gido-tos h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #000000; /* Light mode heading color */
+    transition: color 0.5s ease; /* Heading transition */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#gido-tos p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 20px;
+    color: #000000; /* Light mode paragraph color */
+    transition: color 0.5s ease; /* Paragraph transition */
+}
+
+/* Dark Mode */
+body.dark-mode #gido-tos {
+    background: #222; /* Dark mode background */
+    color: #ffffff; /* Dark mode text color */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Stronger shadow for dark mode */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body.dark-mode #gido-tos h2 {
+    color: #fff; /* Dark mode heading color */
+}
+
+
+
+
+
+
+
+
+
+
+
+body.dark-mode #gido-tos p {
+    color: #ffffff; /* Dark mode paragraph color */
+}
+/* General hero section styles */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+/* Typing effect */
+#hero-title {
+    font-size: 3rem;
+    overflow: hidden;
+    border-right: 3px solid white; /* Cursor effect */
+    white-space: nowrap; /* Prevents text wrapping */
+    margin: 0 auto; /* Centering text */
+    letter-spacing: 0.1em; /* Optional for wider letters */
+    width: 0; /* Start with 0 width */
+    animation: typing 3.5s steps(30, end) forwards, blink 0.75s step-end 3.5s forwards, bounce 5s ease-in-out infinite;
+}
+
+/* Typing animation */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 22ch; /* Adjust width to fit your text (20ch = 20 characters) */
+    }
+}
+
+
+/* Blinking cursor effect (stops after typing ends) */
+@keyframes blink {
+    from {
+        border-right-color: white;
+    }
+    to {
+        border-right-color: transparent;
+    }
+}
+
+/* Bouncing animation (up and down) */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+/* General link styling */
+a {
+    color: #5865F2; /* Discord's primary color */
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+
+
+/* Specific styling for the Discord server link if needed */
+a[href="https://discord.gg/Gq48UpPrXH"] {
+    font-weight: normal; /* Makes this link bolder */
+
+}
+
+/* Styling the custom scrollbar */
+body::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track color */
+    border-radius: 10px;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: #052aff; /* Scrollbar color */
+    border-radius: 10px;
+  }
+  
+  body::-webkit-scrollbar-thumb:hover {
+    background: #052aff; /* Color on hover */
+  }
+  
