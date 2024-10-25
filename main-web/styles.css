@@ -1708,22 +1708,3 @@ a[href="https://discord.gg/Gq48UpPrXH"] {
 
 }
 
-/* Styling the custom scrollbar */
-body::-webkit-scrollbar {
-    width: 12px; /* Width of the scrollbar */
-  }
-  
-  body::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Track color */
-    border-radius: 10px;
-  }
-  
-  body::-webkit-scrollbar-thumb {
-    background: #052aff; /* Scrollbar color */
-    border-radius: 10px;
-  }
-  
-  body::-webkit-scrollbar-thumb:hover {
-    background: #052aff; /* Color on hover */
-  }
-  
