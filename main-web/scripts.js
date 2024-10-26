@@ -160,6 +160,57 @@ try {
         setTimeout(() => notificationContainer.remove(), 5000);
     };
 
+    const checkBotStatusAndUptime = async () => {
+        const statusIndicator = document.getElementById('status-indicator');
+        const uptimeIndicator = document.getElementById('uptime-indicator');
+    
+        try {
+            // Fetch the bot status
+            const statusResponse = await fetch('https://fetch-bot-fvty.onrender.com/api/status');
+            if (!statusResponse.ok) {
+                throw new Error(`Status fetch error: ${statusResponse.status}`);
+            }
+            const statusData = await statusResponse.json();
+            
+            if (statusData.status === 'online') {
+                // Update the status to online
+                statusIndicator.classList.add('online');
+                statusIndicator.style.backgroundColor = '#4CAF50';
+                statusIndicator.textContent = 'Online';
+    
+                // Fetch the uptime
+                const uptimeResponse = await fetch('https://gido-bot-94q6.onrender.com/uptime');
+                if (!uptimeResponse.ok) {
+                    throw new Error(`Uptime fetch error: ${uptimeResponse.status}`);
+                }
+                const uptimeData = await uptimeResponse.json();
+                uptimeIndicator.style.color = '#4CAF50';
+                uptimeIndicator.textContent = `Uptime: ${uptimeData.uptime}`;
+            } else {
+                // Update the status to offline
+                statusIndicator.classList.remove('online');
+                statusIndicator.style.backgroundColor = '#FF0000';
+                statusIndicator.textContent = 'Offline';
+    
+                // Set uptime as Offline
+                uptimeIndicator.style.color = '#FF0000';
+                uptimeIndicator.textContent = 'Uptime: Offline';
+            }
+        } catch (error) {
+            console.error('Failed to fetch status or uptime:', error);
+            statusIndicator.style.backgroundColor = '#FF0000';
+            statusIndicator.textContent = 'Cannot Fetch Gido Bot Status. Please Try Again Later.';
+            uptimeIndicator.style.color = '#FF0000';
+            uptimeIndicator.textContent = 'Uptime: Offline';
+        }
+    };
+    
+    // Check status and uptime on load and when online/offline events occur
+    window.addEventListener('online', checkBotStatusAndUptime);
+    window.addEventListener('offline', checkBotStatusAndUptime);
+    checkBotStatusAndUptime();
+    
+
     const checkStatus = async () => {
         const statusIndicator = document.getElementById('status-indicator');
         const errorMessage = document.getElementById('error-message');
