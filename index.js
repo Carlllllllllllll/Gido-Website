@@ -55,7 +55,7 @@ app.use(helmet({
         directives: {
             defaultSrc: ["'none'"],
             imgSrc: ["'self'", "https://gido-web.ooguy.com", "data:", "https://cdn.discordapp.com", "https://images-ext-1.discordapp.net", "https://media.discordapp.net/attachments/", "https://media.discordapp.net/", "/images/", "https://cdn.discordapp.com/attachments/1272578222164541460/1295775574089928826/Add_a_heading.gif?ex=6710894b&is=670f37cb&hm=2f78cf3c1095a7c851af63497effb6b484c44877b9ceff91af8c0aa427630e12&"],
-            connectSrc: ["'self'", "https://gido-web.ooguy.com", "https://fetch-bot-fvty.onrender.com/"],
+            connectSrc: ["'self'", "https://gido-web.ooguy.com", "https://fetch-bot-fvty.onrender.com/", "https://gido-bot-94q6.onrender.com/uptime"],
             scriptSrc: ["'self'", "https://gido-web.ooguy.com"],
             styleSrc: ["'self'", (req, res) => `'nonce-${res.locals.nonce}'`, "https://gido-web.ooguy.com"],
         },
